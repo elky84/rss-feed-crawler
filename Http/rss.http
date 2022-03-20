@@ -23,10 +23,6 @@ Content-Type: application/json
             "Name": "김준형 (토스, LG전자 등)"
         },
         {
-            "Url": "https://blog.kivol.net/rss",
-            "Name": "흔한 개발자 (노리 CTO 조승연)"
-        },
-        {
             "Url": "https://devblogs.microsoft.com/cppblog/feed/",
             "Name": "C++ Team Blog"
         },
@@ -175,10 +171,6 @@ Content-Type: application/json
             "Name": "권용진"
         },
         {
-            "Url": "http://blog.nacyot.com/feed.xml",
-            "Name": "김대권"
-        },
-        {
             "Url": "https://nesoy.github.io/atom.xml",
             "Name": "권영재"
         },
@@ -187,12 +179,8 @@ Content-Type: application/json
             "Name": "김민수"
         },
         {
-            "Url": "http://raccoonyy.github.io/rss/index.rss",
+            "Url": "http://raccoonyy.github.io/rss",
             "Name": "김승호"
-        },
-        {
-            "Url": "https://kingbbode.github.io/feed.xml",
-            "Name": "권용근"
         },
         {
             "Url": "http://kimbyeonghwan.tumblr.com/rss",
@@ -255,10 +243,6 @@ Content-Type: application/json
             "Name": "김상훈"
         },
         {
-            "Url": "https://feeds.feedburner.com/firejune",
-            "Name": "경준호"
-        },
-        {
             "Url": "https://brunch.co.kr/atom/@@O1Z",
             "Name": "김민석"
         },
@@ -289,10 +273,6 @@ Content-Type: application/json
         {
             "Url": "http://thdev.tech/feed.xml",
             "Name": "권태환"
-        },
-        {
-            "Url": "http://bomjun.tistory.com/rss",
-            "Name": "김범준"
         },
         {
             "Url": "http://shiren.github.io/feed.xml",
@@ -335,10 +315,6 @@ Content-Type: application/json
             "Name": "권남"
         },
         {
-            "Url": "http://mingeun.com/feed",
-            "Name": "김민근"
-        },
-        {
             "Url": "http://insanehong.kr/rss.xml",
             "Name": "김덕홍"
         },
@@ -365,10 +341,6 @@ Content-Type: application/json
         {
             "Url": "http://j.mearie.org/rss",
             "Name": "강성훈"
-        },
-        {
-            "Url": "http://blog.hatemogi.com/rss",
-            "Name": "김대현"
         },
         {
             "Url": "https://01010011.blog/feed/",
@@ -599,10 +571,6 @@ Content-Type: application/json
             "Name": "Hybrid's Notes"
         },
         {
-            "Url": "https://libsora.so/index.xml",
-            "Name": "/usr/lib/libsora.so on /usr/lib/libsora.so"
-        },
-        {
             "Url": "http://rss.egloos.com/blog/Agbird",
             "Name": "gimmesilver's blog"
         },
@@ -687,10 +655,6 @@ Content-Type: application/json
             "Name": "우아한형제들 기술 블로그"
         },
         {
-            "Url": "http://tmondev.blog.me/rss",
-            "Name": "티몬의 개발이야기"
-        },
-        {
             "Url": "https://meetup.toast.com/rss",
             "Name": "TOAST Meetup"
         },
@@ -701,10 +665,6 @@ Content-Type: application/json
         {
             "Url": "https://zuminternet.github.io/feed.xml",
             "Name": "ZUM 기술 블로그"
-        },
-        {
-            "Url": "https://tech.peoplefund.co.kr/feed.xml",
-            "Name": "Peoplefund Tech"
         },
         {
             "Url": "http://tech.kakao.com/rss/",
