@@ -55,7 +55,7 @@ namespace FeedCrawler.Crawler
                         ItemContent = item.Content,
                         FeedTitle = feed.Title,
                         Href = link,
-                        DateTime = feed.LastUpdatedDate.GetValueOrDefault(DateTime.Now)
+                        DateTime = item.PublishingDate.GetValueOrDefault(DateTime.Now)
                     };
 
                     await OnCrawlData(feedData);
