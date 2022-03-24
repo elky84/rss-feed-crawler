@@ -35,8 +35,7 @@ namespace Server.Services
                 new CreateIndexModel<FeedData>(Builders<FeedData>.IndexKeys.Ascending(x => x.DateTime)),
                 new CreateIndexModel<FeedData>(Builders<FeedData>.IndexKeys.Ascending(x => x.ItemTitle)),
                 new CreateIndexModel<FeedData>(Builders<FeedData>.IndexKeys.Ascending(x => x.FeedTitle)),
-                new CreateIndexModel<FeedData>(Builders<FeedData>.IndexKeys.Ascending(x => x.Url).Ascending(x => x.Href), 
-                                               new CreateIndexOptions { Unique = true})
+                new CreateIndexModel<FeedData>(Builders<FeedData>.IndexKeys.Ascending(x => x.Url).Ascending(x => x.Href))
             });
         }
 
