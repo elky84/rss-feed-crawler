@@ -1,9 +1,9 @@
 ﻿using EzAspDotNet.Exception;
+using EzAspDotNet.Models;
 using EzAspDotNet.Services;
-using EzAspDotNet.Util;
+using EzMongoDb.Util;
 using FeedCrawler.Models;
 using MongoDB.Driver;
-using Server.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -34,11 +34,15 @@ namespace Server.Services
         public async Task<Protocols.Response.Rss> Create(Protocols.Request.Rss rss)
         {
             var created = await Create(rss.Data);
+            if (created == null)
+            {
+                throw new DeveloperException(Code.ResultCode.NotFoundData);
+            }
 
             return new Protocols.Response.Rss
             {
                 ResultCode = Code.ResultCode.Success,
-                Data = created?.ToProtocol()
+                Data = MapperUtil.Map<Protocols.Common.Rss>(created)
             };
 
         }
@@ -47,7 +51,8 @@ namespace Server.Services
         {
             try
             {
-                return await _mongoDbRss.UpsertAsync(Builders<Rss>.Filter.Eq(x => x.Url, rss.Url), rss.ToModel());
+                return await _mongoDbRss.UpsertAsync(Builders<Rss>.Filter.Eq(x => x.Url, rss.Url),
+                    MapperUtil.Map<Rss>(rss));
             }
             catch (MongoWriteException)
             {
@@ -57,24 +62,32 @@ namespace Server.Services
 
         public async Task<Protocols.Response.RssMulti> CreateMulti(Protocols.Request.RssMulti rssMulti)
         {
-            var rsss = new List<Rss>();
+            var rsses = new List<Rss>();
             foreach (var rss in rssMulti.Datas)
             {
-                rsss.Add(await Create(rss));
+                rsses.Add(await Create(rss));
             }
 
             return new Protocols.Response.RssMulti
             {
-                Datas = rsss.ConvertAll(x => x.ToProtocol())
+                Datas = MapperUtil.Map<List<Rss>,
+                                       List<Protocols.Common.Rss>>
+                                       (rsses)
             };
         }
 
         public async Task<Protocols.Response.Rss> GetById(string id)
         {
+            var rss = await _mongoDbRss.FindOneAsyncById(id);
+            if (rss == null)
+            {
+                throw new DeveloperException(Code.ResultCode.NotFoundData);
+            }
+
             return new Protocols.Response.Rss
             {
                 ResultCode = Code.ResultCode.Success,
-                Data = (await _mongoDbRss.FindOneAsyncById(id))?.ToProtocol()
+                Data = MapperUtil.Map<Protocols.Common.Rss>(rss)
             };
         }
 
@@ -85,13 +98,18 @@ namespace Server.Services
 
         public async Task<Protocols.Response.Rss> Update(string id, Protocols.Request.Rss rss)
         {
-            var update = rss.Data.ToModel();
+            var update = MapperUtil.Map<Rss>(rss);
 
             var updated = await _mongoDbRss.UpdateAsync(id, update);
+            if (updated == null)
+            {
+                throw new DeveloperException(Code.ResultCode.NotFoundData);
+            }
+
             return new Protocols.Response.Rss
             {
                 ResultCode = Code.ResultCode.Success,
-                Data = (updated ?? update).ToProtocol()
+                Data = MapperUtil.Map<Protocols.Common.Rss>(updated)
             };
         }
 
@@ -103,10 +121,17 @@ namespace Server.Services
 
         public async Task<Protocols.Response.Rss> Delete(string id)
         {
+            var deleted = await _mongoDbRss.RemoveGetAsync(id);
+            if (deleted == null)
+            {
+                throw new DeveloperException(Code.ResultCode.NotFoundData);
+            }
+
+
             return new Protocols.Response.Rss
             {
                 ResultCode = Code.ResultCode.Success,
-                Data = (await _mongoDbRss.RemoveGetAsync(id))?.ToProtocol()
+                Data = MapperUtil.Map<Protocols.Common.Rss>(deleted)
             };
         }
     }

@@ -1,10 +1,11 @@
-﻿using EzAspDotNet.Notification.Models;
+﻿using EzAspDotNet.Models;
+using EzAspDotNet.Notification.Models;
 using EzAspDotNet.Services;
 using EzAspDotNet.Util;
+using EzMongoDb.Util;
 using FeedCrawler.Crawler;
 using FeedCrawler.Models;
 using MongoDB.Driver;
-using Server.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -55,7 +56,7 @@ namespace Server.Services
                 Offset = feedList.Offset,
                 Sort = feedList.Sort,
                 Asc = feedList.Asc,
-                Datas = (await _mongoFeedData.Page(filter, feedList.Limit, feedList.Offset, feedList.Sort, feedList.Asc)).ConvertAll(x => x.ToProtocol()),
+                Datas = MapperUtil.Map<List<FeedData>, List<Protocols.Common.FeedData>>(await _mongoFeedData.Page(filter, feedList.Limit, feedList.Offset, feedList.Sort, feedList.Asc)),
                 Total = await _mongoFeedData.CountAsync(filter)
             };
         }
@@ -63,11 +64,14 @@ namespace Server.Services
         public async Task<Protocols.Response.Feed> Execute(Protocols.Request.Feed feed)
         {
             var onCrawlDataDelegate = new RssCrawler.CrawlDataDelegate(OnNewCrawlData);
-            var rssList = feed.All ? (await _rssService.All()).ConvertAll(x => x.ToProtocol()) : feed.RssList;
+            var rssList = feed.All ?
+                MapperUtil.Map<List<Rss>, List<Protocols.Common.Rss>>(await _rssService.All()) :
+                feed.RssList;
+
             Parallel.ForEach(rssList, new ParallelOptions { MaxDegreeOfParallelism = 16 },
                 async rss =>
                 {
-                    var update = await new RssCrawler(onCrawlDataDelegate, _mongoDbService.Database, rss.ToModel()).RunAsync();
+                    var update = await new RssCrawler(onCrawlDataDelegate, _mongoDbService.Database, MapperUtil.Map<Rss>(rss)).RunAsync();
                     if (update != null)
                     {
                         await _rssService.Update(update);
@@ -83,7 +87,7 @@ namespace Server.Services
 
         public async Task OnNewCrawlData(FeedData feedData)
         {
-            if(DateTime.Now.Subtract(feedData.DateTime).TotalDays > 7)
+            if (DateTime.Now.Subtract(feedData.DateTime).TotalDays > 7)
             {
                 return;
             }

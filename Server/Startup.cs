@@ -1,3 +1,4 @@
+using AutoMapper;
 using EzAspDotNet.Exception;
 using EzAspDotNet.Services;
 using Microsoft.AspNetCore.Builder;
@@ -38,6 +39,23 @@ namespace Server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            EzAspDotNet.Models.MapperUtil.Initialize(
+                new MapperConfiguration(cfg =>
+                {
+                    cfg.CreateMap<EzAspDotNet.Notification.Models.Notification, Protocols.Common.Notification>();
+                    cfg.CreateMap<Protocols.Common.Notification, EzAspDotNet.Notification.Models.Notification>();
+
+                    cfg.CreateMap<FeedCrawler.Models.Rss, Protocols.Common.Rss>()
+                        .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+
+                    cfg.CreateMap<Protocols.Common.Rss, FeedCrawler.Models.Rss>()
+                        .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+
+                    cfg.CreateMap<FeedCrawler.Models.FeedData, Protocols.Common.FeedData>();
+                    cfg.CreateMap<Protocols.Common.FeedData, FeedCrawler.Models.FeedData>();
+                })
+            );
+
             services.AddHttpClient();
 
             services.AddControllers().AddNewtonsoftJson();
@@ -60,15 +78,17 @@ namespace Server
                 options.CustomSchemaIds(x => x.FullName);
             });
 
+            services.AddTransient<HttpClientService>();
+
             services.AddTransient<MongoDbService>();
+
+            services.AddSingleton<IHostedService, WebHookLoopingService>();
+            services.AddSingleton<WebHookService>();
 
             services.AddSingleton<IHostedService, CrawlingLoopingService>();
             services.AddSingleton<CrawlingService>();
 
             services.AddSingleton<NotificationService>();
-
-            services.AddSingleton<IHostedService, WebHookLoopingService>();
-            services.AddSingleton<WebHookService>();
 
             services.AddSingleton<RssService>();
         }

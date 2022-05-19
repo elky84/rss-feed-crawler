@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EzAspDotNet.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Server.Models;
 using Server.Services;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Server.Controllers
@@ -27,7 +28,9 @@ namespace Server.Controllers
         {
             return new Protocols.Response.RssMulti
             {
-                Datas = (await _rssService.All()).ConvertAll(x => x.ToProtocol())
+                Datas = MapperUtil.Map<List<FeedCrawler.Models.Rss>,
+                                       List<Protocols.Common.Rss>>
+                                       (await _rssService.All())
             };
         }
 
@@ -36,7 +39,9 @@ namespace Server.Controllers
         {
             return new Protocols.Response.RssMulti
             {
-                Datas = (await _rssService.Error()).ConvertAll(x => x.ToProtocol())
+                Datas = MapperUtil.Map<List<FeedCrawler.Models.Rss>,
+                                       List<Protocols.Common.Rss>>
+                                       (await _rssService.Error())
             };
         }
 

@@ -1,6 +1,6 @@
 ﻿using CodeHollow.FeedReader;
 using CodeHollow.FeedReader.Feeds;
-using EzAspDotNet.Util;
+using EzMongoDb.Util;
 using FeedCrawler.Models;
 using MongoDB.Driver;
 using System;
