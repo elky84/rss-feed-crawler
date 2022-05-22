@@ -42,17 +42,19 @@ namespace Server
             EzAspDotNet.Models.MapperUtil.Initialize(
                 new MapperConfiguration(cfg =>
                 {
-                    cfg.CreateMap<EzAspDotNet.Notification.Models.Notification, Protocols.Common.Notification>();
-                    cfg.CreateMap<Protocols.Common.Notification, EzAspDotNet.Notification.Models.Notification>();
+                    cfg.AllowNullDestinationValues = true;
 
-                    cfg.CreateMap<FeedCrawler.Models.Rss, Protocols.Common.Rss>()
+                    cfg.CreateMap<EzAspDotNet.Notification.Models.Notification, Protocols.Common.Notification>(MemberList.None);
+                    cfg.CreateMap<Protocols.Common.Notification, EzAspDotNet.Notification.Models.Notification>(MemberList.None);
+
+                    cfg.CreateMap<FeedCrawler.Models.Rss, Protocols.Common.Rss>(MemberList.None)
                         .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
-                    cfg.CreateMap<Protocols.Common.Rss, FeedCrawler.Models.Rss>()
+                    cfg.CreateMap<Protocols.Common.Rss, FeedCrawler.Models.Rss>(MemberList.None)
                         .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
-                    cfg.CreateMap<FeedCrawler.Models.FeedData, Protocols.Common.FeedData>();
-                    cfg.CreateMap<Protocols.Common.FeedData, FeedCrawler.Models.FeedData>();
+                    cfg.CreateMap<FeedCrawler.Models.FeedData, Protocols.Common.FeedData>(MemberList.None);
+                    cfg.CreateMap<Protocols.Common.FeedData, FeedCrawler.Models.FeedData>(MemberList.None);
                 })
             );
 
