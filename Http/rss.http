@@ -725,6 +725,14 @@ Content-Type: application/json
     {
         "Url": "https://wbluke.tistory.com/rss",
         "Name": "박우빈"
+    },
+    {
+        "Url": "https://v2.velog.io/rss/mdy0102",
+        "Name": "문다영"
+    },
+    {
+        "Url": "https://smelllee.tistory.com/rss",
+        "Name": "이향아"
     }
 	]
 }
@@ -749,8 +757,8 @@ Content-Type: application/json
 
 {
     "Data": {
-        "Url": "https://wbluke.tistory.com/rss",
-        "Name": "박우빈"
+        "Url": "https://v2.velog.io/rss/mdy0102",
+        "Name": "문다영"
     }
 }
 
