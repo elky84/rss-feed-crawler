@@ -733,6 +733,26 @@ Content-Type: application/json
     {
         "Url": "https://smelllee.tistory.com/rss",
         "Name": "이향아"
+    },
+    {
+        "Url": "https://awesome-blogs.petabytes.org/feeds?group=dev",
+        "Name": "Awesome Blogs (개발자)"
+    },
+    {
+        "Url": "https://awesome-blogs.petabytes.org/feeds?group=company",
+        "Name": "Awesome Blogs (기술 회사)"
+    },
+    {
+        "Url": "https://v2.velog.io/rss/sweet_sumin",
+        "Name": "유수민"
+    },
+    {
+        "Url": "https://v2.velog.io/rss/ahngj96",
+        "Name": "안건주"
+    },
+    {
+        "Url": "https://internet-craft.tistory.com/rss",
+        "Name": "손현호"
     }
 	]
 }
@@ -744,8 +764,8 @@ Content-Type: application/json
 
 {
     "Datas": [{
-        "Url": "http://elky84.github.io/feed.xml",
-        "Name": "Elky Essay"
+        "Url": "https://awesome-blogs.petabytes.org/feeds?group=company",
+        "Name": "Awesome Blogs (기술 회사)"
     }]
 }
 
@@ -757,8 +777,8 @@ Content-Type: application/json
 
 {
     "Data": {
-        "Url": "https://v2.velog.io/rss/mdy0102",
-        "Name": "문다영"
+        "Url": "https://internet-craft.tistory.com/rss",
+        "Name": "손현호"
     }
 }
 
