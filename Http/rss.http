@@ -753,6 +753,30 @@ Content-Type: application/json
     {
         "Url": "https://internet-craft.tistory.com/rss",
         "Name": "손현호"
+    },
+    {
+        "Url": "https://www.thestartupbible.com/feed",
+        "Name": "STARTUP BIBLE"
+    },
+    {
+        "Url": "https://sonujung.com/rss.xml",
+        "Name": "Build a Great Product"
+    },
+    {
+        "Url": "http://icunow.co.kr/feed/",
+        "Name": "지금 써보러 갑니다"
+    },
+    {
+        "Url": "https://dewberry9.github.io/feed.xml",
+        "Name": "매거진 입맛"
+    },
+    {
+        "Url": "https://yozm.wishket.com/magazine/feed/",
+        "Name": "요즘 IT"
+    },
+    {
+        "Url": "https://medium.com/feed/@coupang-engineering-kr",
+        "Name": "쿠팡 엔지니어링"
     }
 	]
 }
@@ -763,10 +787,12 @@ POST {{host}}/Rss/Multi
 Content-Type: application/json
 
 {
-    "Datas": [{
-        "Url": "https://awesome-blogs.petabytes.org/feeds?group=company",
-        "Name": "Awesome Blogs (기술 회사)"
-    }]
+    "Datas": [
+        {
+            "Url": "https://medium.com/feed/@coupang-engineering-kr",
+            "Name": "쿠팡 엔지니어링"
+        }
+    ]
 }
 
 
