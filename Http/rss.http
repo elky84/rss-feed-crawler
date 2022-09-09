@@ -735,14 +735,6 @@ Content-Type: application/json
         "Name": "이향아"
     },
     {
-        "Url": "https://awesome-blogs.petabytes.org/feeds?group=dev",
-        "Name": "Awesome Blogs (개발자)"
-    },
-    {
-        "Url": "https://awesome-blogs.petabytes.org/feeds?group=company",
-        "Name": "Awesome Blogs (기술 회사)"
-    },
-    {
         "Url": "https://v2.velog.io/rss/sweet_sumin",
         "Name": "유수민"
     },
@@ -777,6 +769,34 @@ Content-Type: application/json
     {
         "Url": "https://medium.com/feed/@coupang-engineering-kr",
         "Name": "쿠팡 엔지니어링"
+    },
+    {
+        "Url": "https://dev.gmarket.com/rss",
+        "Name": "지마켓 기술 블로그"
+    },
+    {
+        "Url": "https://blog.dramancompany.com/feed/",
+        "Name": "리멤버 (드라마 앤 컴퍼니)"
+    },
+    {
+        "Url": "https://techblogposts.com/rss.xml",
+        "Name": "Tech Blog Posts"
+    },
+    {
+        "Url": "https://www.geeksforgeeks.org/feed/",
+        "Name": "Geek for Geeks"
+    },
+    {
+        "Url": "https://dev.to/feed",
+        "Name": "Dev.to"
+    },
+    {
+        "Url": "https://kimchihill.com/feed/",
+        "Name": "Kimchi hill"
+    },
+    {
+        "Url": "https://hudi.blog/rss.xml",
+        "Name": "Hudi.blog"
     }
 	]
 }
@@ -789,8 +809,8 @@ Content-Type: application/json
 {
     "Datas": [
         {
-            "Url": "https://medium.com/feed/@coupang-engineering-kr",
-            "Name": "쿠팡 엔지니어링"
+            "Url": "https://hudi.blog/rss.xml",
+            "Name": "Hudi.blog"
         }
     ]
 }
