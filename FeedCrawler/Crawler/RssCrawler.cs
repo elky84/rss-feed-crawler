@@ -3,6 +3,7 @@ using CodeHollow.FeedReader.Feeds;
 using EzMongoDb.Util;
 using FeedCrawler.Models;
 using MongoDB.Driver;
+using Serilog;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -44,7 +45,18 @@ namespace FeedCrawler.Crawler
                         link = atomFeedItem.Links.LastOrDefault().Href;
                     }
 
-                    link = link.StartsWith("http") ? link : feed.Link + link;
+                    if (link != null)
+                    {
+                        link = link.StartsWith("http") ? link : feed.Link + link;
+                    }
+                    else if (Uri.IsWellFormedUriString(item.Id, UriKind.Absolute))
+                    {
+                        link = item.Id;
+                    }
+                    else
+                    {
+                        Log.Error($"Not found Link. <Item:{item}> <Url:{Rss.Url}>");
+                    }
 
                     var feedData = new FeedData
                     {

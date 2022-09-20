@@ -34,6 +34,17 @@ namespace Server.Controllers
             };
         }
 
+        [HttpGet("Json")]
+        public async Task<Protocols.Response.RssJson> Json()
+        {
+            return new Protocols.Response.RssJson
+            {
+                Datas = MapperUtil.Map<List<FeedCrawler.Models.Rss>,
+                                       List<Protocols.Common.RssJson>>
+                                       (await _rssService.All())
+            };
+        }
+
         [HttpGet("Error")]
         public async Task<Protocols.Response.RssMulti> Error()
         {

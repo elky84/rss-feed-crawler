@@ -4,6 +4,7 @@ using EzAspDotNet.Services;
 using EzMongoDb.Util;
 using FeedCrawler.Models;
 using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -51,6 +52,7 @@ namespace Server.Services
         {
             try
             {
+                rss.Created = DateTime.Now;
                 return await _mongoDbRss.UpsertAsync(Builders<Rss>.Filter.Eq(x => x.Url, rss.Url),
                     MapperUtil.Map<Rss>(rss));
             }

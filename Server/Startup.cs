@@ -53,6 +53,8 @@ namespace Server
                     cfg.CreateMap<Protocols.Common.Rss, FeedCrawler.Models.Rss>(MemberList.None)
                         .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
+                    cfg.CreateMap<FeedCrawler.Models.Rss, Protocols.Common.RssJson>(MemberList.None);
+
                     cfg.CreateMap<FeedCrawler.Models.FeedData, Protocols.Common.FeedData>(MemberList.None);
                     cfg.CreateMap<Protocols.Common.FeedData, FeedCrawler.Models.FeedData>(MemberList.None);
                 })
