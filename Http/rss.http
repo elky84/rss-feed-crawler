@@ -2352,6 +2352,10 @@ Content-Type: application/json
     {
       "url": "https://d2.naver.com/d2.atom",
       "name": "네이버"
+    },
+    {
+      "name": "신현묵",
+      "url": "https://v2.velog.io/rss/zetlos"
     }
   ]
 }
@@ -2364,8 +2368,8 @@ Content-Type: application/json
 {
     "Datas": [
       {
-        "name": "네이버",
-        "url": "https://d2.naver.com/d2.atom"
+        "name": "신현묵",
+        "url": "https://v2.velog.io/rss/zetlos"
       }
     ]
 }
