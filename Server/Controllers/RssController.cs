@@ -35,7 +35,18 @@ namespace Server.Controllers
         }
 
         [HttpGet("Json")]
-        public async Task<Protocols.Response.RssJson> Json()
+        public async Task<Protocols.Response.RssJson> Json(string category)
+        {
+            return new Protocols.Response.RssJson
+            {
+                Datas = MapperUtil.Map<List<FeedCrawler.Models.Rss>,
+                                       List<Protocols.Common.RssJson>>
+                                       (await _rssService.Category(category))
+            };
+        }
+
+        [HttpGet("Json/All")]
+        public async Task<Protocols.Response.RssJson> JsonAll()
         {
             return new Protocols.Response.RssJson
             {

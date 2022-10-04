@@ -8,6 +8,8 @@ namespace Server.Protocols.Common
 
         public string Name { get; set; }
 
+        public string Category { get; set; }
+
         public DateTime? ErrorTime { get; set; }
 
         public string Error { get; set; }

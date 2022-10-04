@@ -4,8 +4,11 @@ GET {{host}}/Rss
 
 ### Rss Get Json (Request format)
 
-GET {{host}}/Rss/Json
+GET {{host}}/Rss/Json/All
 
+### Rss Get Json Category
+
+GET {{host}}/Rss/Json?category=개인
 
 ### Rss Get Error
 
@@ -17,2345 +20,951 @@ POST {{host}}/Rss/Multi
 Content-Type: application/json
 
 {
-	"Datas": {
-      "url": "https://ppss.kr/archives/category/it/rss",
-      "name": "ㅍㅍㅅㅅ"
-    },
+	"Datas": [
     {
-      "url": "https://medium.com/feed/@ghilbut",
-      "name": "김준형"
+      "url": "https://ppss.kr/archives/category/it/rss",
+      "name": "ㅍㅍㅅㅅ",
+      "category": "큐레이팅",
     },
     {
       "url": "https://devblogs.microsoft.com/cppblog/feed/",
-      "name": "C++ Team Blog"
+      "name": "C++ Team Blog",
+      "category": "기업"
     },
     {
       "url": "https://code.facebook.com/posts/rss",
-      "name": "Facebook Engineering"
+      "name": "Facebook Engineering",
+      "category": "기업"
     },
     {
       "url": "http://www.ebaytechblog.com/feed/",
-      "name": "eBay Tech Blog"
+      "name": "eBay Tech Blog",
+      "category": "기업"
     },
     {
       "url": "http://feeds.feedburner.com/TwitterBlog",
-      "name": "Twitter Blog"
+      "name": "Twitter Blog",
+      "category": "기업"
     },
     {
       "url": "https://medium.com/feed/netflix-techblog",
-      "name": "Netflix TechBlog"
+      "name": "Netflix TechBlog",
+      "category": "기업"
     },
     {
       "url": "https://blog.jetbrains.com/feed/",
-      "name": "JetBrains: Developer Tools for Professionals and Teams – Company Blog | JetBrains"
+      "name": "JetBrains: Developer Tools for Professionals and Teams – Company Blog | JetBrains",
+      "category": "기업"
     },
     {
       "url": "https://engineering.linkedin.com/blog.rss",
-      "name": "LinkedIn Engineering"
+      "name": "LinkedIn Engineering",
+      "category": "기업"
     },
     {
       "url": "https://medium.com/feed/airbnb-engineering",
-      "name": "Airbnb Engineering & Data Science"
+      "name": "Airbnb Engineering & Data Science",
+      "category": "기업"
     },
     {
       "url": "https://developer.amazon.com/blogs/home/feed/entries/atom",
-      "name": "Amazon Developer Blogs"
+      "name": "Amazon Developer Blogs",
+      "category": "기업"
     },
     {
       "url": "http://instagram-engineering.tumblr.com/rss",
-      "name": "Instagram Engineering"
+      "name": "Instagram Engineering",
+      "category": "기업"
     },
     {
       "url": "https://medium.com/feed/paypal-engineering",
-      "name": "PayPal Engineering"
+      "name": "PayPal Engineering",
+      "category": "기업"
     },
     {
       "url": "https://techcommunity.microsoft.com/gxcuf89792/rss/message?board.id=PlannerBlog&message.id=200",
-      "name": "article New updates to Planner comment notifications and settings in Planner Blog"
+      "name": "article New updates to Planner comment notifications and settings in Planner Blog",
+      "category": "기업"
     },
     {
       "url": "https://devblogs.microsoft.com/visualstudio/feed/",
-      "name": "Visual Studio Blog"
+      "name": "Visual Studio Blog",
+      "category": "기업"
     },
     {
       "url": "https://instagram-engineering.com/feed",
-      "name": "Instagram Engineering"
+      "name": "Instagram Engineering",
+      "category": "기업"
     },
     {
       "url": "https://blogs.dropbox.com/tech/feed/",
-      "name": "Dropbox Tech Blog"
+      "name": "Dropbox Tech Blog",
+      "category": "기업"
     },
     {
       "url": "https://joshua1988.github.io/atom.xml",
-      "name": "Joshua"
+      "name": "Joshua",
+      "category": "개인"
     },
     {
       "url": "http://dataninja.me/feed.xml",
-      "name": "권재명"
+      "name": "권재명",
+      "category": "개인"
     },
     {
       "url": "https://brunch.co.kr/rss/@@ERG",
-      "name": "김석기"
+      "name": "김석기",
+      "category": "개인"
     },
     {
       "url": "http://sunyzero.tistory.com/rss",
-      "name": "김선영"
+      "name": "김선영",
+      "category": "개인"
     },
     {
       "url": "http://jinhokwon.tistory.com/rss",
-      "name": "권진호"
+      "name": "권진호",
+      "category": "개인"
     },
     {
       "url": "http://charsyam.wordpress.com/feed/",
-      "name": "강대명"
+      "name": "강대명",
+      "category": "개인"
     },
     {
       "url": "http://xguru.net/feed",
-      "name": "권정혁"
+      "name": "권정혁",
+      "category": "개인"
     },
     {
       "url": "https://wckhg89.github.io/feed.xml",
-      "name": "줌구"
+      "name": "줌구",
+      "category": "개인"
     },
     {
       "url": "http://nolsigan.github.io/feed.xml",
-      "name": "김범준"
+      "name": "김범준",
+      "category": "개인"
     },
     {
       "url": "https://subokim.wordpress.com/feed/",
-      "name": "김수보"
+      "name": "김수보",
+      "category": "개인"
     },
     {
       "url": "http://rss.egloos.com/blog/himskim",
-      "name": "김명신"
+      "name": "김명신",
+      "category": "개인"
     },
     {
       "url": "https://brunch.co.kr/rss/@@2MrI",
-      "name": "김시은"
+      "name": "김시은",
+      "category": "개인"
     },
     {
       "url": "https://brunch.co.kr/rss/@@YZF",
-      "name": "곽민수"
+      "name": "곽민수",
+      "category": "개인"
     },
     {
       "url": "https://medium.com/feed/@beejei",
-      "name": "김범진"
+      "name": "김범진",
+      "category": "개인"
     },
     {
       "url": "http://blog.rss.naver.com/mseokim011117.xml",
-      "name": "김민서"
+      "name": "김민서",
+      "category": "개인"
     },
     {
       "url": "https://iamnotokay.tistory.com/rss",
-      "name": "I am not Okay"
+      "name": "I am not Okay",
+      "category": "개인"
     },
     {
       "url": "http://thoughts.chkwon.net/feed/",
-      "name": "권창현"
+      "name": "권창현",
+      "category": "개인"
     },
     {
       "url": "http://kwongyo.tistory.com/rss",
-      "name": "권기호"
+      "name": "권기호",
+      "category": "개인"
     },
     {
       "url": "https://brunch.co.kr/rss/@@PUo",
-      "name": "김수민"
+      "name": "김수민",
+      "category": "개인"
     },
     {
       "url": "http://daddynkidsmakers.blogspot.com/feeds/posts/default",
-      "name": "강태욱"
+      "name": "강태욱",
+      "category": "개인"
     },
     {
       "url": "https://brunch.co.kr/rss/@@H9i",
-      "name": "권용진"
+      "name": "권용진",
+      "category": "개인"
     },
     {
       "url": "https://nesoy.github.io/atom.xml",
-      "name": "권영재"
+      "name": "권영재",
+      "category": "개인"
     },
     {
       "url": "http://alwayspr.tistory.com/rss",
-      "name": "김민수"
+      "name": "김민수",
+      "category": "개인"
     },
     {
       "url": "http://raccoonyy.github.io/rss",
-      "name": "김승호"
+      "name": "김승호",
+      "category": "개인"
     },
     {
       "url": "http://kimbyeonghwan.tumblr.com/rss",
-      "name": "김병환"
+      "name": "김병환",
+      "category": "개인"
     },
     {
       "url": "https://rss.blog.naver.com/boyism.xml",
-      "name": "RSS feed for boyism Blog"
+      "name": "RSS feed for boyism Blog",
+      "category": "개인"
     },
     {
       "url": "https://brunch.co.kr/rss/@@20dR",
-      "name": "김성준의 린스타트업과 디자인씽킹"
+      "name": "김성준의 린스타트업과 디자인씽킹",
+      "category": "개인"
     },
     {
       "url": "https://medium.com/feed/@khwsc1",
-      "name": "권혁우"
+      "name": "권혁우",
+      "category": "개인"
+    },
+    {
+      "url": "https://medium.com/feed/@ghilbut",
+      "name": "김준형",
+      "category": "개인"
     },
     {
       "url": "https://brunch.co.kr/rss/@@1fY0",
-      "name": "강동혁"
+      "name": "강동혁",
+      "category": "개인"
     },
     {
       "url": "https://brunch.co.kr/rss/@@24SO",
-      "name": "고종범"
+      "name": "고종범",
+      "category": "개인"
     },
     {
       "url": "https://cheese10yun.github.io/feed.xml",
-      "name": "cheese10yun"
+      "name": "cheese10yun",
+      "category": "개인"
     },
     {
       "url": "http://forest71.tistory.com/rss",
-      "name": "구자철"
+      "name": "구자철",
+      "category": "개인"
     },
     {
       "url": "https://oraora.tistory.com/rss",
-      "name": "FSS"
+      "name": "FSS",
+      "category": "개인"
     },
     {
       "url": "https://mayajuni.github.io/feed.xml",
-      "name": "권동준"
+      "name": "권동준",
+      "category": "개인"
     },
     {
       "url": "http://app-developer.tistory.com/rss",
-      "name": "김용일"
+      "name": "김용일",
+      "category": "개인"
     },
     {
       "url": "http://seokjun.kr/rss/",
-      "name": "김석준"
+      "name": "김석준",
+      "category": "개인"
     },
     {
       "url": "http://www.dokyun.pe.kr/rss",
-      "name": "김도균"
+      "name": "김도균",
+      "category": "개인"
     },
     {
       "url": "http://interpiler.com/index.php/feed/",
-      "name": "김상훈"
+      "name": "김상훈",
+      "category": "개인"
     },
     {
       "url": "https://brunch.co.kr/atom/@@O1Z",
-      "name": "김민석"
+      "name": "김민석",
+      "category": "개인"
     },
     {
       "url": "https://dongwoo.blog/feed/",
-      "name": "김동우"
+      "name": "김동우",
+      "category": "개인"
     },
     {
       "url": "http://web-front-end.tistory.com/rss",
-      "name": "권윤학"
+      "name": "권윤학",
+      "category": "개인"
     },
     {
       "url": "https://velopert.com/feed",
-      "name": "김민준"
+      "name": "김민준",
+      "category": "개인"
     },
     {
       "url": "https://medium.com/feed/@devholic",
-      "name": "강성훈"
+      "name": "강성훈",
+      "category": "개인"
     },
     {
       "url": "https://mansoo-sw.blogspot.com/feeds/posts/default",
-      "name": "김만수"
+      "name": "김만수",
+      "category": "개인"
     },
     {
       "url": "https://elky84.github.io/feed.xml",
-      "name": "김성훈"
+      "name": "엘키",
+      "category": "개인"
     },
     {
       "url": "http://thdev.tech/feed.xml",
-      "name": "권태환"
+      "name": "권태환",
+      "category": "개인"
     },
     {
       "url": "http://shiren.github.io/feed.xml",
-      "name": "김성호"
+      "name": "김성호",
+      "category": "개인"
     },
     {
       "url": "http://blog.seulgi.kim/feeds/posts/default",
-      "name": "김슬기"
+      "name": "김슬기",
+      "category": "개인"
     },
     {
       "url": "https://kwang82.blogspot.com/feeds/posts/default",
-      "name": "김광현"
+      "name": "김광현",
+      "category": "개인"
     },
     {
       "url": "http://sungbine.github.io/feed.xml",
-      "name": "김성빈"
+      "name": "김성빈",
+      "category": "개인"
     },
     {
       "url": "http://datajournal.kr/feed/",
-      "name": "김영우"
+      "name": "김영우",
+      "category": "개인"
     },
     {
       "url": "http://kangmyounghun.blogspot.com/feeds/posts/default",
-      "name": "강명훈"
+      "name": "강명훈",
+      "category": "개인"
     },
     {
       "url": "http://feeds.feedburner.com/theyearlyprophet/GGGO",
-      "name": "구종만"
+      "name": "구종만",
+      "category": "개인"
     },
     {
       "url": "https://b.luavis.kr/feed.xml",
-      "name": "강성일"
+      "name": "강성일",
+      "category": "개인"
     },
     {
       "url": "http://minjang.github.io/feed.xml",
-      "name": "김민장"
+      "name": "김민장",
+      "category": "개인"
     },
     {
       "url": "http://rss.egloos.com/blog/kwon37xi",
-      "name": "권남"
+      "name": "권남",
+      "category": "개인"
     },
     {
       "url": "http://insanehong.kr/rss.xml",
-      "name": "김덕홍"
+      "name": "김덕홍",
+      "category": "개인"
     },
     {
       "url": "http://sungjk.github.io/feed.xml",
-      "name": "김성중"
+      "name": "김성중",
+      "category": "개인"
     },
     {
       "url": "http://danielku.com/atom.xml",
-      "name": "구교준"
+      "name": "구교준",
+      "category": "개인"
     },
     {
       "url": "http://martian36.tistory.com/rss",
-      "name": "김덕기"
+      "name": "김덕기",
+      "category": "개인"
     },
     {
       "url": "https://brunch.co.kr/rss/@@LOc",
-      "name": "고명환"
+      "name": "고명환",
+      "category": "개인"
     },
     {
       "url": "https://medium.com/feed/@shaynekang",
-      "name": "강성희"
+      "name": "강성희",
+      "category": "개인"
     },
     {
       "url": "http://j.mearie.org/rss",
-      "name": "강성훈"
+      "name": "강성훈",
+      "category": "개인"
     },
     {
       "url": "https://01010011.blog/feed/",
-      "name": "강병수"
+      "name": "강병수",
+      "category": "개인"
     },
     {
       "url": "https://harfangk.github.io/feed.xml",
-      "name": "김봉현"
+      "name": "김봉현",
+      "category": "개인"
     },
     {
       "url": "https://hskang9.github.io/feed.xml",
-      "name": "강형석"
+      "name": "강형석",
+      "category": "개인"
     },
     {
       "url": "http://babysunmoon.tistory.com/rss",
-      "name": "김수로"
+      "name": "김수로",
+      "category": "개인"
     },
     {
       "url": "http://minieetea.com/feed",
-      "name": "강미경"
+      "name": "강미경",
+      "category": "개인"
     },
     {
       "url": "http://greemate.tistory.com/rss",
-      "name": "김성현"
+      "name": "김성현",
+      "category": "개인"
     },
     {
       "url": "https://brunch.co.kr/rss/@@3Y0",
-      "name": "강진우"
+      "name": "강진우",
+      "category": "개인"
     },
     {
       "url": "https://mingrammer.com/index.xml",
-      "name": "권민재"
+      "name": "권민재",
+      "category": "개인"
     },
     {
       "url": "https://taetaetae.github.io/index.xml",
-      "name": "권태관"
+      "name": "권태관",
+      "category": "개인"
     },
     {
       "url": "http://dokonk.blogspot.com/feeds/posts/default",
-      "name": "김도곤"
+      "name": "김도곤",
+      "category": "개인"
     },
     {
       "url": "http://keyassist.tistory.com/rss",
-      "name": "김영웅"
+      "name": "김영웅",
+      "category": "개인"
     },
     {
       "url": "https://rss.blog.naver.com/lbs0718.xml",
-      "name": "칡토스의 게임 개발"
+      "name": "칡토스의 게임 개발",
+      "category": "개인"
     },
     {
       "url": "http://blog.rss.naver.com/sckim007.xml",
-      "name": "김선철"
+      "name": "김선철",
+      "category": "개인"
     },
     {
       "url": "https://nolboo.kim/feed.xml",
-      "name": "김놀부"
-    },
-    {
-      "url": "https://rss.blog.naver.com/clauds.xml",
-      "name": "아이티카노(IT Car Know)"
+      "name": "김놀부",
+      "category": "개인"
     },
     {
       "url": "http://rss.egloos.com/blog/isao76",
-      "name": "isao의 IT,게임번역소"
+      "name": "isao의 IT,게임번역소",
+      "category": "개인"
     },
     {
       "url": "http://blog.lael.be/feed",
-      "name": "Lael's World"
+      "name": "Lael's World",
+      "category": "개인"
     },
     {
       "url": "http://muzbox.tistory.com/rss",
-      "name": "프리웨어 이야기"
+      "name": "프리웨어 이야기",
+      "category": "개인"
     },
     {
       "url": "http://chauchau0.tistory.com/rss",
-      "name": "동우리의 블로그"
+      "name": "동우리의 블로그",
+      "category": "개인"
     },
     {
       "url": "http://www.hatena.co.kr/rss",
-      "name": "하테나"
+      "name": "하테나",
+      "category": "개인"
     },
     {
       "url": "http://feeds.feedburner.com/lazion",
-      "name": "늑돌이네 라지온"
+      "name": "늑돌이네 라지온",
+      "category": "개인"
     },
     {
       "url": "http://bbs.ruliweb.com/news/board/11/rss",
-      "name": "루리웹 - 루리웹 리뷰 게시판"
+      "name": "루리웹 - 루리웹 리뷰 게시판",
+      "category": "게임"
     },
     {
       "url": "https://brunch.co.kr/rss/@@34qN",
-      "name": "Reasontobe"
+      "name": "Reasontobe",
+      "category": "개인"
     },
     {
       "url": "http://crazytigerlife.tistory.com/rss",
-      "name": "자유로운 생활"
+      "name": "자유로운 생활",
+      "category": "개인"
     },
     {
       "url": "http://estima.wordpress.com/feed/",
-      "name": "에스티마의 인터넷이야기 EstimaStory.com"
+      "name": "에스티마의 인터넷이야기 EstimaStory.com",
+      "category": "개인"
     },
     {
       "url": "http://sacstory.tistory.com/rss",
-      "name": "나긋한 개발 - 데비안 리눅스와 프로그램 언어"
+      "name": "나긋한 개발 - 데비안 리눅스와 프로그램 언어",
+      "category": "개인"
     },
     {
       "url": "http://blog.leekyoungil.com/?feed=rss2",
-      "name": "Kyoungil's Blog"
+      "name": "Kyoungil's Blog",
+      "category": "개인"
     },
     {
       "url": "http://blog.rss.naver.com/laster40.xml",
-      "name": "일상을 여행처럼..."
+      "name": "일상을 여행처럼...",
+      "category": "개인"
     },
     {
       "url": "http://khrislog.net/rss",
-      "name": "khris'log"
+      "name": "khris'log",
+      "category": "개인"
     },
     {
       "url": "http://feedproxy.google.com/rickstrahl",
-      "name": "Rick Strahl's Web Log"
+      "name": "Rick Strahl's Web Log",
+      "category": "개인"
     },
     {
       "url": "http://justhackem.wordpress.com/feed/",
-      "name": "Just hack'em"
+      "name": "Just hack'em",
+      "category": "개인"
     },
     {
       "url": "http://feeds.feedburner.com/CppTruths",
-      "name": "C++ Truths"
+      "name": "C++ Truths",
+      "category": "개인"
     },
     {
       "url": "https://jacking75.github.io/feed.xml",
-      "name": "jacking75"
+      "name": "jacking75",
+      "category": "개인"
     },
     {
       "url": "http://www.joelonsoftware.com/rss.xml",
-      "name": "Joel on Software"
+      "name": "Joel on Software",
+      "category": "개인"
     },
     {
       "url": "http://feeds.feedburner.com/crazytazo",
-      "name": "벤자민로그"
+      "name": "벤자민로그",
+      "category": "개인"
     },
     {
       "url": "http://blog.xcoda.net/rss",
-      "name": "악보쓰는 프로그래머"
+      "name": "악보쓰는 프로그래머",
+      "category": "개인"
     },
     {
       "url": "http://jeremyko.blogspot.com/feeds/posts/default",
-      "name": "쭌안아빠"
+      "name": "쭌안아빠",
+      "category": "개인"
     },
     {
       "url": "http://aker.tistory.com/rss",
-      "name": "A Gangster World"
+      "name": "A Gangster World",
+      "category": "개인"
     },
     {
       "url": "http://luckyyowu.tistory.com/rss",
-      "name": "요우의 내맘대로 블로그"
+      "name": "요우의 내맘대로 블로그",
+      "category": "개인"
     },
     {
       "url": "http://blog.gaerae.com/feeds/posts/default",
-      "name": "개발자스럽다"
+      "name": "개발자스럽다",
+      "category": "큐레이션"
     },
     {
       "url": "http://rss.egloos.com/blog/oniondev",
-      "name": "양파개발자 Sw의 블로그입니다^^"
+      "name": "양파개발자 Sw의 블로그입니다^^",
+      "category": "개인"
     },
     {
       "url": "http://blog.rss.naver.com/crisious.xml",
-      "name": "Against All Odds."
+      "name": "Against All Odds.",
+      "category": "개인"
     },
     {
       "url": "http://rss.egloos.com/blog/parkpd",
-      "name": "박피디의 게임 개발 이야기"
+      "name": "박피디의 게임 개발 이야기",
+      "category": "개인"
     },
     {
       "url": "http://blog.rss.naver.com/gal_yong.xml",
-      "name": "움직이는 게임서버"
+      "name": "움직이는 게임서버",
+      "category": "개인"
     },
     {
       "url": "http://feeds.feedburner.com/sangwook",
-      "name": "이상욱"
+      "name": "이상욱",
+      "category": "개인"
     },
     {
       "url": "http://blog.rss.naver.com/arcangeleri.xml",
-      "name": "개발자"
+      "name": "임철재",
+      "category": "개인"
     },
     {
       "url": "https://zzsza.github.io/feed.xml",
-      "name": "어쩐지 오늘은"
+      "name": "어쩐지 오늘은",
+      "category": "개인"
     },
     {
       "url": "https://oddpoet.net/feed.xml",
-      "name": "oddpoet’s étude"
+      "name": "oddpoet’s étude",
+      "category": "개인"
     },
     {
       "url": "http://agile.egloos.com/index.xml",
-      "name": "애자일 이야기"
+      "name": "애자일 이야기",
+      "category": "개인"
     },
     {
       "url": "https://snutiise.github.io/feed.xml",
-      "name": "0x00 - NULL"
+      "name": "0x00 - NULL",
+      "category": "개인"
     },
     {
       "url": "http://serverdown.tistory.com/rss",
-      "name": "퇴근 후 서버다운"
+      "name": "퇴근 후 서버다운",
+      "category": "개인"
     },
     {
       "url": "https://coolspeed.wordpress.com/feed/",
-      "name": "coolspeed"
+      "name": "coolspeed",
+      "category": "개인"
     },
     {
       "url": "https://perfectacle.github.io/atom.xml",
-      "name": "오늘도 끄적끄적"
+      "name": "오늘도 끄적끄적",
+      "category": "개인"
     },
     {
       "url": "http://blog.rss.naver.com/sorkelf.xml",
-      "name": "dx11 Vanica's Lifelog - 夢が夢で終わらないように"
+      "name": "dx11 Vanica's Lifelog - 夢が夢で終わらないように",
+      "category": "개인"
     },
     {
       "url": "http://arcangeleri.tistory.com/rss",
-      "name": "초코사랑"
+      "name": "초코사랑",
+      "category": "개인"
     },
     {
       "url": "https://www.zerocho.com/api/rss.xml",
-      "name": "ZeroCho Blog"
+      "name": "ZeroCho Blog",
+      "category": "개인"
     },
     {
       "url": "http://hybrid0.tumblr.com/rss",
-      "name": "Hybrid's Notes"
+      "name": "Hybrid's Notes",
+      "category": "개인"
     },
     {
       "url": "http://rss.egloos.com/blog/Agbird",
-      "name": "gimmesilver's blog"
+      "name": "gimmesilver's blog",
+      "category": "개인"
     },
     {
       "url": "http://blog.rss.naver.com/imays.xml",
-      "name": "imays게임엔진개발자"
+      "name": "imays게임엔진개발자",
+      "category": "개인"
     },
     {
       "url": "https://rss.blog.naver.com/hurinmon.xml",
-      "name": "RSS feed for hurinmon Blog"
+      "name": "RSS feed for hurinmon Blog",
+      "category": "개인"
     },
     {
       "url": "http://jojoldu.tistory.com/rss",
-      "name": "기억보단 기록을"
+      "name": "기억보단 기록을",
+      "category": "개인"
     },
     {
       "url": "http://westwoodforever.blogspot.com/feeds/posts/default",
-      "name": "WestwoodForever's Dev Log"
+      "name": "WestwoodForever's Dev Log",
+      "category": "개인"
     },
     {
       "url": "http://java.ihoney.pe.kr/rss",
-      "name": "허니몬(Honeymon)의 자바guru"
+      "name": "허니몬(Honeymon)의 자바guru",
+      "category": "개인"
     },
     {
       "url": "http://honsal.blogspot.kr/feeds/posts/default?alt=rss",
-      "name": "Wolf Loves Fox :: 일상"
+      "name": "Wolf Loves Fox :: 일상",
+      "category": "개인"
     },
     {
       "url": "http://kindtis.tistory.com/rss",
-      "name": "Game Programmer Life"
+      "name": "Game Programmer Life",
+      "category": "개인"
     },
     {
       "url": "https://10yearscoder.tistory.com/rss",
-      "name": "IT 프리랜서 이야기"
+      "name": "IT 프리랜서 이야기",
+      "category": "개인"
     },
     {
       "url": "https://www.whiteship.me/rss/",
-      "name": "Whiteship's Epril"
+      "name": "Whiteship's Epril",
+      "category": "개인"
     },
     {
       "url": "https://megayuchi.wordpress.com/feed/",
-      "name": "yuchi's dev"
+      "name": "yuchi's dev",
+      "category": "개인"
     },
     {
       "url": "https://joone.net/feed/",
-      "name": "만화로 나누는 자유/오픈소스 소프트웨어 이야기"
+      "name": "만화로 나누는 자유/오픈소스 소프트웨어 이야기",
+      "category": "개인"
     },
     {
       "url": "http://hyeonseok.com/rss/",
-      "name": "신현석(Hyeonseok Shin)"
+      "name": "신현석(Hyeonseok Shin)",
+      "category": "개인"
     },
     {
       "url": "http://www.sangkon.com/rss/",
-      "name": "Sigmadream"
+      "name": "한상곤 - Sigmadream",
+      "category": "개인"
     },
     {
       "url": "https://woolbro.tistory.com/feed/",
-      "name": "개발자 울이 노트"
+      "name": "개발자 울이 노트",
+      "category": "개인"
     },
     {
       "url": "http://blog.rss.naver.com/dlehddus84.xml",
-      "name": "즐거운 개발자 :: 네이버  블로그"
+      "name": "즐거운 개발자 :: 네이버  블로그",
+      "category": "개인"
     },
     {
       "url": "http://blog.rss.naver.com/kimbeast.xml",
-      "name": "황제펭귄의 게임개발이야기 [여기는 한국]"
+      "name": "황제펭귄의 게임개발이야기 [여기는 한국]",
+      "category": "개인"
     },
     {
       "url": "https://engineering.linecorp.com/ko/blog/rss2",
-      "name": "LINE ENGINEERING"
-    },
-    {
-      "url": "http://d2.naver.com/d2.atom",
-      "name": "D2 Blog"
+      "name": "LINE ENGINEERING",
+      "category": "기업"
     },
     {
       "url": "https://blog.banksalad.com/rss.xml",
-      "name": "뱅크샐러드 블로그"
+      "name": "뱅크샐러드 블로그",
+      "category": "기업"
     },
     {
       "url": "http://woowabros.github.io/feed.xml",
-      "name": "우아한형제들 기술 블로그"
+      "name": "우아한형제들 기술 블로그",
+      "category": "기업"
     },
     {
       "url": "https://meetup.toast.com/rss",
-      "name": "TOAST Meetup"
+      "name": "TOAST Meetup",
+      "category": "기업"
     },
     {
       "url": "https://blog.weirdx.io/feed",
-      "name": "이상한모임"
+      "name": "이상한모임",
+      "category": "기업"
     },
     {
       "url": "https://zuminternet.github.io/feed.xml",
-      "name": "ZUM 기술 블로그"
+      "name": "ZUM 기술 블로그",
+      "category": "기업"
     },
     {
       "url": "http://tech.kakao.com/rss/",
-      "name": "tech.kakao.com"
+      "name": "tech.kakao.com",
+      "category": "기업"
     },
     {
       "url": "https://tech.lezhin.com/rss",
-      "name": "레진 기술 블로그"
+      "name": "레진 기술 블로그",
+      "category": "기업"
     },
     {
       "url": "http://feeds.feedburner.com/skpreadme",
-      "name": "README"
+      "name": "SK Planet",
+      "category": "기업"
     },
     {
       "url": "https://spoqa.github.io/atom.xml",
-      "name": "Spoqa tech blog"
+      "name": "Spoqa tech blog",
+      "category": "기업"
     },
     {
       "url": "https://rss.blog.naver.com/teamwaldo.xml",
-      "name": "팀 왈도 번역팀"
+      "name": "팀 왈도 번역팀",
+      "category": "게임"
     },
     {
       "url": "https://wit.nts-corp.com/feed",
-      "name": "NTS"
+      "name": "NTS",
+      "category": "기업"
     },
     {
       "url": "https://blog.hanlee.io/rss.xml",
-      "name": "이한"
+      "name": "이한",
+      "category": "개인"
     },
     {
       "url": "https://gracefullight.dev/feed.xml",
-      "name": "Gracefullight Web.dev"
-    },
-    {
-      "url": "https://hyperconnect.github.io/feed.xml",
-      "name": "HyperConnect Tech Blog"
+      "name": "Gracefullight Web.dev",
+      "category": "개인"
     },
     {
       "url": "https://blog.roto.codes/rss/",
-      "name": "로토의 블로그"
+      "name": "로토의 블로그",
+      "category": "개인"
     },
     {
       "url": "https://highfence.tistory.com/feed",
-      "name": "근원님"
+      "name": "근원님",
+      "category": "개인"
     },
     {
       "url": "https://medium.com/feed/@zmag",
-      "name": "황의윤"
+      "name": "황의윤",
+      "category": "개인"
     },
     {
       "url": "https://hodolman.com/rss",
-      "name": "호돌맨"
+      "name": "호돌맨",
+      "category": "개인"
     },
     {
       "url": "https://wbluke.tistory.com/rss",
-      "name": "박우빈"
+      "name": "박우빈",
+      "category": "개인"
     },
     {
       "url": "https://v2.velog.io/rss/mdy0102",
-      "name": "문다영"
+      "name": "문다영",
+      "category": "개인"
     },
     {
       "url": "https://v2.velog.io/rss/sweet_sumin",
-      "name": "유수민"
+      "name": "유수민",
+      "category": "개인"
     },
     {
       "url": "https://v2.velog.io/rss/ahngj96",
-      "name": "안건주"
+      "name": "안건주",
+      "category": "개인"
     },
     {
       "url": "https://internet-craft.tistory.com/rss",
-      "name": "손현호"
+      "name": "손현호",
+      "category": "개인"
     },
     {
       "url": "https://www.thestartupbible.com/feed",
-      "name": "STARTUP BIBLE"
+      "name": "STARTUP BIBLE",
+      "category": "개인"
     },
     {
       "url": "https://sonujung.com/rss.xml",
-      "name": "Build a Great Product"
+      "name": "Build a Great Product",
+      "category": "개인"
     },
     {
       "url": "http://icunow.co.kr/feed/",
-      "name": "지금 써보러 갑니다"
+      "name": "지금 써보러 갑니다",
+      "category": "개인"
     },
     {
       "url": "https://dewberry9.github.io/feed.xml",
-      "name": "매거진 입맛"
+      "name": "매거진 입맛",
+      "category": "큐레이션"
     },
     {
       "url": "https://yozm.wishket.com/magazine/feed/",
-      "name": "요즘 IT"
+      "name": "요즘 IT",
+      "category": "큐레이션"
     },
     {
       "url": "https://medium.com/feed/@coupang-engineering-kr",
-      "name": "쿠팡 엔지니어링"
+      "name": "쿠팡 엔지니어링",
+      "category": "기업"
     },
     {
       "url": "https://dev.gmarket.com/rss",
-      "name": "지마켓 기술 블로그"
+      "name": "지마켓 기술 블로그",
+      "category": "기업"
     },
     {
       "url": "https://blog.dramancompany.com/feed/",
-      "name": "리멤버 (드라마 앤 컴퍼니)"
+      "name": "리멤버 (드라마 앤 컴퍼니)",
+      "category": "기업"
     },
     {
       "url": "https://techblogposts.com/rss.xml",
-      "name": "Tech Blog Posts"
-    },
-    {
-      "url": "https://dev.to/feed",
-      "name": "Dev.to"
+      "name": "Tech Blog Posts",
+      "category": "큐레이션"
     },
     {
       "url": "https://kimchihill.com/feed/",
-      "name": "Kimchi hill"
+      "name": "Kimchi hill",
+      "category": "큐레이션"
     },
     {
       "url": "https://hudi.blog/rss.xml",
-      "name": "Hudi.blog"
+      "name": "Hudi.blog",
+      "category": "개인"
     },
     {
       "url": "https://blog.toss.im/rss.xml",
-      "name": "토스"
-    },
-    {
-      "url": "강대명",
-      "name": "https://charsyam.wordpress.com/feed/"
-    },
-    {
-      "url": "강성일",
-      "name": "https://b.luavis.kr/feed.xml"
-    },
-    {
-      "url": "강성훈",
-      "name": "https://j.mearie.org/rss"
-    },
-    {
-      "url": "강성희",
-      "name": "https://medium.com/feed/@shaynekang"
-    },
-    {
-      "url": "강진우",
-      "name": "https://brunch.co.kr/rss/@@3Y0"
-    },
-    {
-      "url": "구종만",
-      "name": "https://feeds.feedburner.com/theyearlyprophet/GGGO?format=xml"
-    },
-    {
-      "url": "권정혁",
-      "name": "https://feeds.feedburner.com/xguru?format=xml"
-    },
-    {
-      "url": "권창현",
-      "name": "https://thoughts.chkwon.net/feed/"
-    },
-    {
-      "url": "김도균",
-      "name": "https://www.dokyun.pe.kr/rss"
-    },
-    {
-      "url": "김민수",
-      "name": "https://blog.kmshack.kr/feed.xml"
-    },
-    {
-      "url": "김민장",
-      "name": "https://minjang.github.io/feed.xml"
-    },
-    {
-      "url": "김민준",
-      "name": "https://v2.velog.io/rss/velopert"
-    },
-    {
-      "url": "김범진",
-      "name": "https://medium.com/feed/@beejei"
-    },
-    {
-      "url": "김병환",
-      "name": "https://kimbyeonghwan.tumblr.com/rss"
-    },
-    {
-      "url": "김석준",
-      "name": "https://seokjun.kim/rss"
-    },
-    {
-      "url": "김선영",
-      "name": "https://sunyzero.tistory.com/rss"
-    },
-    {
-      "url": "김성호",
-      "name": "https://raccoonyy.github.io/rss/"
-    },
-    {
-      "url": "김슬기",
-      "name": "https://blog.seulgi.kim/feeds/posts/default"
-    },
-    {
-      "url": "김영재",
-      "name": "https://youngjaekim.wordpress.com/feed/"
-    },
-    {
-      "url": "김용현",
-      "name": "https://rss.blog.naver.com/drvoss.xml"
-    },
-    {
-      "url": "김우섭",
-      "name": "https://brunch.co.kr/atom/@@tcN"
-    },
-    {
-      "url": "김우승",
-      "name": "https://kimws.wordpress.com/feed/"
-    },
-    {
-      "url": "김원일",
-      "name": "https://androidkr.blogspot.com/feeds/posts/default"
-    },
-    {
-      "url": "김재호",
-      "name": "https://jeho.page/feed.xml"
-    },
-    {
-      "url": "김준형",
-      "name": "https://medium.com/feed/@ghilbut"
-    },
-    {
-      "url": "김진욱",
-      "name": "https://feeds.feedburner.com/reinblog"
-    },
-    {
-      "url": "김충섭",
-      "name": "https://subicura.com/feed.xml"
-    },
-    {
-      "url": "김태곤",
-      "name": "https://taegon.kim/feed"
-    },
-    {
-      "url": "김태균",
-      "name": "https://feeds.feedburner.com/GaeraeBlog?format=xml"
-    },
-    {
-      "url": "김태기",
-      "name": "https://beyondj2ee.wordpress.com/feed/"
-    },
-    {
-      "url": "김훈민",
-      "name": "https://huns.me/feed"
-    },
-    {
-      "url": "김형철",
-      "name": "https://brunch.co.kr/rss/@@OS0"
-    },
-    {
-      "url": "꼬젯",
-      "name": "https://cojette.github.io/feed.xml"
-    },
-    {
-      "url": "도경태",
-      "name": "https://medium.com/feed/@keendev"
-    },
-    {
-      "url": "류광",
-      "name": "https://feeds.feedburner.com/occamsrazr/blog"
-    },
-    {
-      "url": "류종택",
-      "name": "https://ryulib.tistory.com/rss"
-    },
-    {
-      "url": "마경욱",
-      "name": "https://brunch.co.kr/rss/@@JJj"
-    },
-    {
-      "url": "모상우",
-      "name": "https://brunch.co.kr/rss/@@FOY"
-    },
-    {
-      "url": "문동욱",
-      "name": "https://evan-moon.github.io/feed.xml"
-    },
-    {
-      "url": "문호연",
-      "name": "https://www.hohyeonmoon.com/feed.rss"
-    },
-    {
-      "url": "박민우",
-      "name": "https://earlybird.kr/feed"
-    },
-    {
-      "url": "박상권",
-      "name": "https://gun0912.tistory.com/rss"
-    },
-    {
-      "url": "박상민",
-      "name": "https://sangminpark.wordpress.com/feed/"
-    },
-    {
-      "url": "박연오",
-      "name": "https://feeds.feedburner.com/bakyeono"
-    },
-    {
-      "url": "박준희",
-      "name": "https://brunch.co.kr/rss/@@1YN0"
-    },
-    {
-      "url": "박찬영",
-      "name": "https://www.univdev.page/feed.xml"
-    },
-    {
-      "url": "박현우",
-      "name": "https://lqez.github.io/blog/feeds/all.atom.xml"
-    },
-    {
-      "url": "방준영",
-      "name": "https://feeds.feedburner.com/github/bangjunyoung"
-    },
-    {
-      "url": "배성혁",
-      "name": "https://debop.tumblr.com/rss"
-    },
-    {
-      "url": "백명석",
-      "name": "https://brunch.co.kr/rss/@@2xm"
-    },
-    {
-      "url": "백재연",
-      "name": "https://jybaek.tistory.com/rss"
-    },
-    {
-      "url": "범이",
-      "name": "https://blog.daum.net/xml/rss/funfunction"
-    },
-    {
-      "url": "변정훈",
-      "name": "https://feeds.feedburner.com/rss_outsider_dev?format=xml"
-    },
-    {
-      "url": "서광열",
-      "name": "https://gamecodingschool.org/feed/"
-    },
-    {
-      "url": "서민구",
-      "name": "https://mkseo.pe.kr/blog/?feed=rss2"
-    },
-    {
-      "url": "서오석",
-      "name": "https://brunch.co.kr/rss/@@2YE"
-    },
-    {
-      "url": "성동찬",
-      "name": "https://gywn.net/feed/"
-    },
-    {
-      "url": "손영수",
-      "name": "https://arload.wordpress.com/feed/"
-    },
-    {
-      "url": "송영길",
-      "name": "https://youngsong.com/feed/"
-    },
-    {
-      "url": "송영환",
-      "name": "https://purluno.wordpress.com/feed/"
-    },
-    {
-      "url": "송효진",
-      "name": "https://lovetoken.github.io/feed.xml"
-    },
-    {
-      "url": "시나브로",
-      "name": "https://brunch.co.kr/rss/@@Zvf"
-    },
-    {
-      "url": "신용윤",
-      "name": "https://uni2u.tistory.com/rss"
-    },
-    {
-      "url": "신현묵",
-      "name": "https://v2.velog.io/rss/zetlos"
-    },
-    {
-      "url": "신현석",
-      "name": "https://hyeonseok.com/rss/"
-    },
-    {
-      "url": "신현식",
-      "name": "https://medium.com/feed/ics-lab"
-    },
-    {
-      "url": "안도형",
-      "name": "https://rinae.dev/rss.xml"
-    },
-    {
-      "url": "안오균",
-      "name": "https://ohgyun.com/rss"
-    },
-    {
-      "url": "안윤호",
-      "name": "https://toyfab.tistory.com/rss"
-    },
-    {
-      "url": "안재하",
-      "name": "https://programmingsummaries.tistory.com/rss"
-    },
-    {
-      "url": "안정훈",
-      "name": "https://www.andrewahn.co/feed/"
-    },
-    {
-      "url": "안중원",
-      "name": "https://postgame.tistory.com/rss"
-    },
-    {
-      "url": "안지성",
-      "name": "https://medium.com/feed/@narusas"
-    },
-    {
-      "url": "양병규",
-      "name": "https://rss.blog.naver.com/delmadang.xml"
-    },
-    {
-      "url": "엄태웅",
-      "name": "https://t-robotics.blogspot.com/feeds/posts/default"
-    },
-    {
-      "url": "염재현",
-      "name": "https://only2sea.wordpress.com/feed/"
-    },
-    {
-      "url": "오종빈",
-      "name": "https://feeds.feedburner.com/ohyecloudy-network?format=xml"
-    },
-    {
-      "url": "유진호",
-      "name": "https://brunch.co.kr/atom/@@z8s"
-    },
-    {
-      "url": "윤석찬",
-      "name": "https://feeds.feedburner.com/channy"
-    },
-    {
-      "url": "윤영식",
-      "name": "https://mobicon.tistory.com/rss"
-    },
-    {
-      "url": "윤청하",
-      "name": "https://brunch.co.kr/rss/@@zav"
-    },
-    {
-      "url": "이경원",
-      "name": "https://blog.woniper.net/rss"
-    },
-    {
-      "url": "이규원",
-      "name": "https://justhackem.wordpress.com/feed/"
-    },
-    {
-      "url": "이도현",
-      "name": "https://genesis8.tistory.com/rss"
-    },
-    {
-      "url": "이민호",
-      "name": "https://lumiamitie.github.io/feed.xml"
-    },
-    {
-      "url": "이상욱",
-      "name": "https://feeds.feedburner.com/sangwook?format=xml"
-    },
-    {
-      "url": "이상주",
-      "name": "https://feeds.feedburner.com/surpreem"
-    },
-    {
-      "url": "이상현",
-      "name": "https://iamsang.com/index.xml"
-    },
-    {
-      "url": "이세우",
-      "name": "https://blog.xcoda.net/rss"
-    },
-    {
-      "url": "이소은",
-      "name": "https://medium.com/feed/@soeunlee"
-    },
-    {
-      "url": "이수진",
-      "name": "https://lamanus.kr/feed"
-    },
-    {
-      "url": "이수홍",
-      "name": "https://brunch.co.kr/rss/@@so6"
-    },
-    {
-      "url": "이윤창",
-      "name": "https://daddycat.blogspot.com/feeds/posts/default"
-    },
-    {
-      "url": "이준영",
-      "name": "https://brunch.co.kr/rss/@@QFh"
-    },
-    {
-      "url": "이현섭",
-      "name": "https://hyunseob.github.io/atom.xml"
-    },
-    {
-      "url": "이현주",
-      "name": "https://wayhome25.github.io/atom.xml"
-    },
-    {
-      "url": "장기효",
-      "name": "https://joshuajangblog.wordpress.com/feed/"
-    },
-    {
-      "url": "장성민",
-      "name": "https://feeds.feedburner.com/jangkunblog"
-    },
-    {
-      "url": "장요셉",
-      "name": "https://blog.lastmind.io/feed"
-    },
-    {
-      "url": "장용석",
-      "name": "https://devyongsik.tistory.com/rss"
-    },
-    {
-      "url": "창천향로",
-      "name": "https://jojoldu.tistory.com/rss"
-    },
-    {
-      "url": "장현정",
-      "name": "https://naleejang.tistory.com/rss"
-    },
-    {
-      "url": "전희원",
-      "name": "https://feeds.feedburner.com/gogamza?format=xml"
-    },
-    {
-      "url": "정도현",
-      "name": "https://www.moreagile.net/feeds/posts/default"
-    },
-    {
-      "url": "정윤성",
-      "name": "https://sadang-hobbits.github.io/atom.xml"
-    },
-    {
-      "url": "정윤진",
-      "name": "https://kerberosj.tistory.com/rss"
-    },
-    {
-      "url": "조만영",
-      "name": "https://medium.com/feed/@manyoung"
-    },
-    {
-      "url": "조병욱",
-      "name": "https://bcho.tistory.com/rss"
-    },
-    {
-      "url": "조은",
-      "name": "https://medium.com/feed/@euncho"
-    },
-    {
-      "url": "조인석",
-      "name": "https://brunch.co.kr/rss/@@102g"
-    },
-    {
-      "url": "주우영",
-      "name": "https://blog.coderifleman.com/atom.xml"
-    },
-    {
-      "url": "줌구",
-      "name": "https://wckhg89.github.io/feed.xml"
-    },
-    {
-      "url": "진용진",
-      "name": "https://brunch.co.kr/rss/@@2rV"
-    },
-    {
-      "url": "찜토끼",
-      "name": "https://wlaxhrl.tistory.com/rss"
-    },
-    {
-      "url": "최근우",
-      "name": "https://keunwoochoi.wordpress.com/feed/"
-    },
-    {
-      "url": "최범균",
-      "name": "https://javacan.tistory.com/rss"
-    },
-    {
-      "url": "최승필",
-      "name": "https://brunch.co.kr/rss/@@1iQC"
-    },
-    {
-      "url": "최유석",
-      "name": "https://whitechoi.tistory.com/rss"
-    },
-    {
-      "url": "최창원",
-      "name": "https://qwefgh90.github.io/feed.xml"
-    },
-    {
-      "url": "한승훈",
-      "name": "https://kkamagui.tistory.com/rss"
-    },
-    {
-      "url": "한정일",
-      "name": "https://medium.com/feed/@jungil.han"
-    },
-    {
-      "url": "한주영",
-      "name": "https://medium.com/feed/@jooyunghan"
-    },
-    {
-      "url": "한태웅",
-      "name": "https://effectivesquid.tistory.com/rss"
-    },
-    {
-      "url": "홍민희",
-      "name": "https://blog.hongminhee.org/feed.xml"
-    },
-    {
-      "url": "홍성철",
-      "name": "https://feeds.feedburner.com/fupfin/blog"
-    },
-    {
-      "url": "현승",
-      "name": "https://iam-hs.com/rss"
-    },
-    {
-      "url": "tiii",
-      "name": "https://tiii.tistory.com/rss"
-    },
-    {
-      "url": "tech.ssut",
-      "name": "https://tech.ssut.me/rss/"
-    },
-    {
-      "url": "totuworld",
-      "name": "https://totuworld.github.io/feed.xml"
-    },
-    {
-      "url": "rhostem",
-      "name": "https://blog.rhostem.com/rss.xml"
-    },
-    {
-      "url": "월급쟁이",
-      "name": "https://brunch.co.kr/rss/@@19LF"
-    },
-    {
-      "url": "landvibe",
-      "name": "https://medium.com/feed/@ljs0705"
-    },
-    {
-      "url": "lazygyu",
-      "name": "https://lazygyu.net/rss/blog.xml"
-    },
-    {
-      "url": "wormwlrm",
-      "name": "https://wormwlrm.github.io/feed.xml"
-    },
-    {
-      "url": "pilgwon",
-      "name": "https://pilgwon.github.io/feed.xml"
-    },
-    {
-      "url": "커니",
-      "name": "https://www.androidhuman.com/feed.xml"
-    },
-    {
-      "url": "immigration9",
-      "name": "https://immigration9.github.io/feed.xml"
-    },
-    {
-      "url": "novemberde",
-      "name": "https://novemberde.github.io/index.xml"
-    },
-    {
-      "url": "jungkim",
-      "name": "https://medium.com/feed/@jungkim"
-    },
-    {
-      "url": "sjp38",
-      "name": "https://sjp38.github.io/ko/index.xml"
-    },
-    {
-      "url": "saturnsoft",
-      "name": "https://feeds.feedburner.com/saturnsoft"
-    },
-    {
-      "url": "mytory",
-      "name": "https://feeds.feedburner.com/mytory_tc"
-    },
-    {
-      "url": "감자도스",
-      "name": "https://blog.potados.com/feed.xml"
-    },
-    {
-      "url": "썰렁한 엔지니어",
-      "name": "https://coolengineer.com/rss"
-    },
-    {
-      "url": "plan9",
-      "name": "https://plan9.kr/feed.xml"
-    },
-    {
-      "url": "이한",
-      "name": "https://blog.hanlee.io/rss.xml"
-    },
-    {
-      "url": "soojin.ro",
-      "name": "https://soojin.ro/feed.xml"
-    },
-    {
-      "url": "강웅석",
-      "name": "https://nephtyws.github.io/feed.xml"
-    },
-    {
-      "url": "xiniha",
-      "name": "https://v2.velog.io/rss/xiniha"
-    },
-    {
-      "url": "냉동코더",
-      "name": "https://cliearl.github.io/index.xml"
-    },
-    {
-      "url": "imjhk03",
-      "name": "https://imjhk03.github.io/feed.xml"
-    },
-    {
-      "url": "typefully",
-      "name": "https://typefully.com/dylayed/rss.xml"
-    },
-    {
-      "url": "송요창",
-      "name": "https://medium.com/feed/@totuworld"
-    },
-    {
-      "url": "최건우",
-      "name": "https://medium.com/feed/@choi-geonu"
-    },
-    {
-      "url": "김광현",
-      "name": "https://kwang82.blogspot.com/feeds/posts/default"
-    },
-    {
-      "url": "김국현",
-      "name": "https://feeds.feedburner.com/goodhyun"
-    },
-    {
-      "url": "김상훈",
-      "name": "https://interpiler.com/feed"
-    },
-    {
-      "url": "김현유",
-      "name": "https://www.mickeykim.com/rss"
-    },
-    {
-      "url": "김형석",
-      "name": "https://brunch.co.kr/rss/@@KW8"
-    },
-    {
-      "url": "노정석",
-      "name": "https://rss.blog.naver.com/chesterroh.xml"
-    },
-    {
-      "url": "박상훈",
-      "name": "https://brunch.co.kr/rss/@@v0n"
-    },
-    {
-      "url": "박태림",
-      "name": "https://medium.com/feed/@TaerimPark_CEO"
-    },
-    {
-      "url": "배기홍",
-      "name": "https://feeds.feedburner.com/baenefit/slXh"
-    },
-    {
-      "url": "윤필구",
-      "name": "https://liveandventure.com/feed"
-    },
-    {
-      "url": "이민석",
-      "name": "https://hl1itj.tistory.com/rss"
-    },
-    {
-      "url": "임정욱",
-      "name": "https://estimastory.com/feed/"
-    },
-    {
-      "url": "조성문",
-      "name": "https://sungmooncho.com/feed/"
-    },
-    {
-      "url": "최혁재",
-      "name": "https://brunch.co.kr/rss/@@kDx"
-    },
-    {
-      "url": "쿠도",
-      "name": "https://blog.kudokun.me/feed"
-    },
-    {
-      "url": "한킴",
-      "name": "https://hankim.tumblr.com/rss"
-    },
-    {
-      "url": "uno",
-      "name": "https://brunch.co.kr/atom/@@ZyX"
-    },
-    {
-      "url": "이동건(마이리얼트립)",
-      "name": "https://brunch.co.kr/rss/@@19lv"
-    },
-    {
-      "url": "건물주의 기쁨과 슬픔",
-      "name": "https://brunch.co.kr/rss/@@8eGH"
-    },
-    {
-      "url": "서점직원",
-      "name": "https://brunch.co.kr/rss/@@4zJ"
-    },
-    {
-      "url": "우디",
-      "name": "https://brunch.co.kr/rss/@@2hV3"
-    },
-    {
-      "url": "쟁고",
-      "name": "https://rss.blog.naver.com/lein4d.xml"
-    },
-    {
-      "url": "이바닥늬우스",
-      "name": "https://ebadak.news/feed/"
-    },
-    {
-      "url": "minieetea",
-      "name": "https://minieetea.com/feed"
-    },
-    {
-      "url": "정혜윤",
-      "name": "https://brunch.co.kr/rss/@@79q"
-    },
-    {
-      "url": "김영준",
-      "name": "https://brunch.co.kr/rss/@@4rHO"
-    },
-    {
-      "url": "채수빈",
-      "name": "https://www.canda.blog/rss/"
-    },
-    {
-      "url": "카카오",
-      "name": "https://tech.kakao.com/feed/"
-    },
-    {
-      "url": "네이버",
-      "name": "https://d2.naver.com/d2.atom"
-    },
-    {
-      "url": "라인",
-      "name": "https://engineering.linecorp.com/ko/feed/"
-    },
-    {
-      "url": "토스",
-      "name": "https://toss.tech/rss.xml"
-    },
-    {
-      "url": "우아한형제들 기술 블로그",
-      "name": "https://techblog.woowahan.com/feed/"
-    },
-    {
-      "url": "스타일쉐어",
-      "name": "https://styleshare.github.io/feed.xml"
-    },
-    {
-      "url": "스포카",
-      "name": "https://spoqa.github.io/atom.xml"
-    },
-    {
-      "url": "토스랩(잔디)",
-      "name": "https://tosslab.github.io/feed.xml"
-    },
-    {
-      "url": "티몬",
-      "name": "https://rss.blog.naver.com/tmondev.xml"
-    },
-    {
-      "url": "엠비안",
-      "name": "https://blog.embian.com/rss"
-    },
-    {
-      "url": "데일리호텔",
-      "name": "https://dailyhotel.io/feed"
-    },
-    {
-      "url": "달리웍스",
-      "name": "https://techblog.daliworks.net/feed.xml"
-    },
-    {
-      "url": "후이서울",
-      "name": "https://engineering.huiseoul.com/feed"
-    },
-    {
-      "url": "당근마켓",
-      "name": "https://medium.com/feed/daangn"
-    },
-    {
-      "url": "드라마앤컴퍼니",
-      "name": "https://blog.dramancompany.com/feed/"
-    },
-    {
-      "url": "멋쟁이사자처럼",
-      "name": "https://brunch.co.kr/rss/@@2YH6"
-    },
-    {
-      "url": "깃플",
-      "name": "https://tech.finset.io/atom.xml"
-    },
-    {
-      "url": "플라네타리움",
-      "name": "https://snack.planetarium.dev/kor/index.xml"
-    },
-    {
-      "url": "마켓컬리",
-      "name": "https://helloworld.kurly.com/feed.xml"
-    },
-    {
-      "url": "어반베이스",
-      "name": "https://tech.urbanbase.com/feed.xml"
-    },
-    {
-      "url": "쏘카",
-      "name": "https://tech.socarcorp.kr/feed.xml"
-    },
-    {
-      "url": "유니크굿컴퍼니",
-      "name": "https://medium.com/feed/uniquegood"
-    },
-    {
-      "url": "사람인HR",
-      "name": "https://saramin.github.io/feed.xml"
-    },
-    {
-      "url": "무신사",
-      "name": "https://medium.com/feed/musinsa-tech/tagged/tech-blog"
-    },
-    {
-      "url": "넷마블",
-      "name": "https://netmarble.engineering/feed"
-    },
-    {
-      "url": "하이퍼커넥트",
-      "name": "https://hyperconnect.github.io/feed.xml"
-    },
-    {
-      "url": "요기요",
-      "name": "https://techblog.yogiyo.co.kr/feed"
-    },
-    {
-      "url": "브랜디",
-      "name": "http://labs.brandi.co.kr/feed.xml"
-    },
-    {
-      "url": "줌",
-      "name": "https://zuminternet.github.io/feed"
-    },
-    {
-      "url": "리디",
-      "name": "https://ridicorp.com/story-category/tech-blog/feed/"
-    },
-    {
-      "url": "네이버 플레이스",
-      "name": "https://medium.com/feed/naver-place-dev"
-    },
-    {
-      "url": "카카오엔터테인먼트",
-      "name": "https://fe-developers.kakaoent.com/rss.xml"
-    },
-    {
-      "url": "더핑크퐁컴퍼니",
-      "name": "https://medium.com/feed/pinkfong"
-    },
-    {
-      "url": "헤이딜러",
-      "name": "https://medium.com/feed/prnd"
-    },
-    {
-      "url": "페이히어",
-      "name": "https://blog.payhere.in/rss.xml"
-    },
-    {
-      "url": "데브시스터즈",
-      "name": "https://tech.devsisters.com/rss.xml"
-    },
-    {
-      "url": "레몬베이스(lemonbase)",
-      "name": "https://medium.com/feed/lemonbase"
-    },
-    {
-      "url": "https://charsyam.wordpress.com/feed/",
-      "name": "강대명"
-    },
-    {
-      "url": "https://j.mearie.org/rss",
-      "name": "강성훈"
-    },
-    {
-      "url": "https://feeds.feedburner.com/theyearlyprophet/GGGO?format=xml",
-      "name": "구종만"
-    },
-    {
-      "url": "https://feeds.feedburner.com/xguru?format=xml",
-      "name": "권정혁"
-    },
-    {
-      "url": "https://thoughts.chkwon.net/feed/",
-      "name": "권창현"
-    },
-    {
-      "url": "https://www.dokyun.pe.kr/rss",
-      "name": "김도균"
-    },
-    {
-      "url": "https://blog.kmshack.kr/feed.xml",
-      "name": "김민수"
-    },
-    {
-      "url": "https://minjang.github.io/feed.xml",
-      "name": "김민장"
-    },
-    {
-      "url": "https://v2.velog.io/rss/velopert",
-      "name": "김민준"
-    },
-    {
-      "url": "https://kimbyeonghwan.tumblr.com/rss",
-      "name": "김병환"
-    },
-    {
-      "url": "https://seokjun.kim/rss",
-      "name": "김석준"
-    },
-    {
-      "url": "https://sunyzero.tistory.com/rss",
-      "name": "김선영"
-    },
-    {
-      "url": "https://raccoonyy.github.io/rss/",
-      "name": "김성호"
-    },
-    {
-      "url": "https://blog.seulgi.kim/feeds/posts/default",
-      "name": "김슬기"
-    },
-    {
-      "url": "https://youngjaekim.wordpress.com/feed/",
-      "name": "김영재"
-    },
-    {
-      "url": "https://rss.blog.naver.com/drvoss.xml",
-      "name": "김용현"
-    },
-    {
-      "url": "https://brunch.co.kr/atom/@@tcN",
-      "name": "김우섭"
-    },
-    {
-      "url": "https://kimws.wordpress.com/feed/",
-      "name": "김우승"
-    },
-    {
-      "url": "https://androidkr.blogspot.com/feeds/posts/default",
-      "name": "김원일"
-    },
-    {
-      "url": "https://jeho.page/feed.xml",
-      "name": "김재호"
-    },
-    {
-      "url": "https://feeds.feedburner.com/reinblog",
-      "name": "김진욱"
-    },
-    {
-      "url": "https://subicura.com/feed.xml",
-      "name": "김충섭"
-    },
-    {
-      "url": "https://taegon.kim/feed",
-      "name": "김태곤"
-    },
-    {
-      "url": "https://feeds.feedburner.com/GaeraeBlog?format=xml",
-      "name": "김태균"
-    },
-    {
-      "url": "https://beyondj2ee.wordpress.com/feed/",
-      "name": "김태기"
-    },
-    {
-      "url": "https://huns.me/feed",
-      "name": "김훈민"
-    },
-    {
-      "url": "https://brunch.co.kr/rss/@@OS0",
-      "name": "김형철"
-    },
-    {
-      "url": "https://cojette.github.io/feed.xml",
-      "name": "꼬젯"
-    },
-    {
-      "url": "https://medium.com/feed/@keendev",
-      "name": "도경태"
-    },
-    {
-      "url": "https://feeds.feedburner.com/occamsrazr/blog",
-      "name": "류광"
-    },
-    {
-      "url": "https://ryulib.tistory.com/rss",
-      "name": "류종택"
-    },
-    {
-      "url": "https://brunch.co.kr/rss/@@JJj",
-      "name": "마경욱"
-    },
-    {
-      "url": "https://brunch.co.kr/rss/@@FOY",
-      "name": "모상우"
-    },
-    {
-      "url": "https://evan-moon.github.io/feed.xml",
-      "name": "문동욱"
-    },
-    {
-      "url": "https://www.hohyeonmoon.com/feed.rss",
-      "name": "문호연"
-    },
-    {
-      "url": "https://earlybird.kr/feed",
-      "name": "박민우"
-    },
-    {
-      "url": "https://gun0912.tistory.com/rss",
-      "name": "박상권"
-    },
-    {
-      "url": "https://sangminpark.wordpress.com/feed/",
-      "name": "박상민"
-    },
-    {
-      "url": "https://feeds.feedburner.com/bakyeono",
-      "name": "박연오"
-    },
-    {
-      "url": "https://brunch.co.kr/rss/@@1YN0",
-      "name": "박준희"
-    },
-    {
-      "url": "https://www.univdev.page/feed.xml",
-      "name": "박찬영"
-    },
-    {
-      "url": "https://lqez.github.io/blog/feeds/all.atom.xml",
-      "name": "박현우"
-    },
-    {
-      "url": "https://feeds.feedburner.com/github/bangjunyoung",
-      "name": "방준영"
-    },
-    {
-      "url": "https://debop.tumblr.com/rss",
-      "name": "배성혁"
-    },
-    {
-      "url": "https://brunch.co.kr/rss/@@2xm",
-      "name": "백명석"
-    },
-    {
-      "url": "https://jybaek.tistory.com/rss",
-      "name": "백재연"
-    },
-    {
-      "url": "https://blog.daum.net/xml/rss/funfunction",
-      "name": "범이"
-    },
-    {
-      "url": "https://feeds.feedburner.com/rss_outsider_dev?format=xml",
-      "name": "변정훈"
-    },
-    {
-      "url": "https://gamecodingschool.org/feed/",
-      "name": "서광열"
-    },
-    {
-      "url": "https://mkseo.pe.kr/blog/?feed=rss2",
-      "name": "서민구"
-    },
-    {
-      "url": "https://brunch.co.kr/rss/@@2YE",
-      "name": "서오석"
-    },
-    {
-      "url": "https://brunch.co.kr/rss/@@6oa",
-      "name": "성동찬"
-    },
-    {
-      "url": "https://gywn.net/feed/",
-      "name": "성동찬"
-    },
-    {
-      "url": "https://arload.wordpress.com/feed/",
-      "name": "손영수"
-    },
-    {
-      "url": "https://youngsong.com/feed/",
-      "name": "송영길"
-    },
-    {
-      "url": "https://purluno.wordpress.com/feed/",
-      "name": "송영환"
-    },
-    {
-      "url": "https://lovetoken.github.io/feed.xml",
-      "name": "송효진"
-    },
-    {
-      "url": "https://brunch.co.kr/rss/@@Zvf",
-      "name": "시나브로"
-    },
-    {
-      "url": "https://uni2u.tistory.com/rss",
-      "name": "신용윤"
-    },
-    {
-      "url": "https://zetlos.tistory.com/rss",
-      "name": "신현묵"
-    },
-    {
-      "url": "https://hyeonseok.com/rss/",
-      "name": "신현석"
-    },
-    {
-      "url": "https://medium.com/feed/ics-lab",
-      "name": "신현식"
-    },
-    {
-      "url": "https://rinae.dev/rss.xml",
-      "name": "안도형"
-    },
-    {
-      "url": "https://ohgyun.com/rss",
-      "name": "안오균"
-    },
-    {
-      "url": "https://toyfab.tistory.com/rss",
-      "name": "안윤호"
-    },
-    {
-      "url": "https://programmingsummaries.tistory.com/rss",
-      "name": "안재하"
-    },
-    {
-      "url": "https://www.andrewahn.co/feed/",
-      "name": "안정훈"
-    },
-    {
-      "url": "https://postgame.tistory.com/rss",
-      "name": "안중원"
-    },
-    {
-      "url": "https://medium.com/feed/@narusas",
-      "name": "안지성"
-    },
-    {
-      "url": "https://rss.blog.naver.com/delmadang.xml",
-      "name": "양병규"
-    },
-    {
-      "url": "https://t-robotics.blogspot.com/feeds/posts/default",
-      "name": "엄태웅"
-    },
-    {
-      "url": "https://only2sea.wordpress.com/feed/",
-      "name": "염재현"
-    },
-    {
-      "url": "https://feeds.feedburner.com/ohyecloudy-network?format=xml",
-      "name": "오종빈"
-    },
-    {
-      "url": "https://brunch.co.kr/atom/@@z8s",
-      "name": "유진호"
-    },
-    {
-      "url": "https://feeds.feedburner.com/channy",
-      "name": "윤석찬"
-    },
-    {
-      "url": "https://mobicon.tistory.com/rss",
-      "name": "윤영식"
-    },
-    {
-      "url": "https://brunch.co.kr/rss/@@zav",
-      "name": "윤청하"
-    },
-    {
-      "url": "https://blog.woniper.net/rss",
-      "name": "이경원"
-    },
-    {
-      "url": "https://justhackem.wordpress.com/feed/",
-      "name": "이규원"
-    },
-    {
-      "url": "https://genesis8.tistory.com/rss",
-      "name": "이도현"
-    },
-    {
-      "url": "https://lumiamitie.github.io/feed.xml",
-      "name": "이민호"
-    },
-    {
-      "url": "https://feeds.feedburner.com/sangwook?format=xml",
-      "name": "이상욱"
-    },
-    {
-      "url": "https://feeds.feedburner.com/surpreem",
-      "name": "이상주"
-    },
-    {
-      "url": "https://iamsang.com/index.xml",
-      "name": "이상현"
-    },
-    {
-      "url": "https://blog.xcoda.net/rss",
-      "name": "이세우"
-    },
-    {
-      "url": "https://medium.com/feed/@soeunlee",
-      "name": "이소은"
-    },
-    {
-      "url": "https://lamanus.kr/feed",
-      "name": "이수진"
-    },
-    {
-      "url": "https://brunch.co.kr/rss/@@so6",
-      "name": "이수홍"
-    },
-    {
-      "url": "https://daddycat.blogspot.com/feeds/posts/default",
-      "name": "이윤창"
-    },
-    {
-      "url": "https://brunch.co.kr/rss/@@QFh",
-      "name": "이준영"
-    },
-    {
-      "url": "https://hyunseob.github.io/atom.xml",
-      "name": "이현섭"
-    },
-    {
-      "url": "https://wayhome25.github.io/atom.xml",
-      "name": "이현주"
-    },
-    {
-      "url": "https://joshuajangblog.wordpress.com/feed/",
-      "name": "장기효"
-    },
-    {
-      "url": "https://feeds.feedburner.com/jangkunblog",
-      "name": "장성민"
-    },
-    {
-      "url": "https://blog.lastmind.io/feed",
-      "name": "장요셉"
-    },
-    {
-      "url": "https://devyongsik.tistory.com/rss",
-      "name": "장용석"
-    },
-    {
-      "url": "https://jojoldu.tistory.com/rss",
-      "name": "창천향로"
-    },
-    {
-      "url": "https://naleejang.tistory.com/rss",
-      "name": "장현정"
-    },
-    {
-      "url": "https://feeds.feedburner.com/gogamza?format=xml",
-      "name": "전희원"
-    },
-    {
-      "url": "https://www.moreagile.net/feeds/posts/default",
-      "name": "정도현"
-    },
-    {
-      "url": "https://sadang-hobbits.github.io/atom.xml",
-      "name": "정윤성"
-    },
-    {
-      "url": "https://kerberosj.tistory.com/rss",
-      "name": "정윤진"
-    },
-    {
-      "url": "https://medium.com/feed/@manyoung",
-      "name": "조만영"
-    },
-    {
-      "url": "https://bcho.tistory.com/rss",
-      "name": "조병욱"
-    },
-    {
-      "url": "https://medium.com/feed/@euncho",
-      "name": "조은"
-    },
-    {
-      "url": "https://brunch.co.kr/rss/@@102g",
-      "name": "조인석"
-    },
-    {
-      "url": "https://blog.coderifleman.com/atom.xml",
-      "name": "주우영"
-    },
-    {
-      "url": "https://brunch.co.kr/rss/@@2rV",
-      "name": "진용진"
-    },
-    {
-      "url": "https://wlaxhrl.tistory.com/rss",
-      "name": "찜토끼"
-    },
-    {
-      "url": "https://keunwoochoi.wordpress.com/feed/",
-      "name": "최근우"
-    },
-    {
-      "url": "https://javacan.tistory.com/rss",
-      "name": "최범균"
-    },
-    {
-      "url": "https://brunch.co.kr/rss/@@1iQC",
-      "name": "최승필"
-    },
-    {
-      "url": "https://whitechoi.tistory.com/rss",
-      "name": "최유석"
-    },
-    {
-      "url": "https://qwefgh90.github.io/feed.xml",
-      "name": "최창원"
-    },
-    {
-      "url": "https://kkamagui.tistory.com/rss",
-      "name": "한승훈"
-    },
-    {
-      "url": "https://medium.com/feed/@jungil.han",
-      "name": "한정일"
-    },
-    {
-      "url": "https://medium.com/feed/@jooyunghan",
-      "name": "한주영"
-    },
-    {
-      "url": "https://effectivesquid.tistory.com/rss",
-      "name": "한태웅"
-    },
-    {
-      "url": "https://blog.hongminhee.org/feed.xml",
-      "name": "홍민희"
-    },
-    {
-      "url": "https://feeds.feedburner.com/fupfin/blog",
-      "name": "홍성철"
-    },
-    {
-      "url": "https://iam-hs.com/rss",
-      "name": "현승"
-    },
-    {
-      "url": "https://harfangk.github.io/feed_ko.xml",
-      "name": "Harfang"
-    },
-    {
-      "url": "https://realignist.me/feed",
-      "name": "Haze Lee"
-    },
-    {
-      "url": "https://seorenn.blogspot.com/feeds/posts/default",
-      "name": "Renn Seo"
-    },
-    {
-      "url": "https://tiii.tistory.com/rss",
-      "name": "tiii"
-    },
-    {
-      "url": "https://canapio.tistory.com/rss",
-      "name": "canapio"
-    },
-    {
-      "url": "https://pluu.github.io/feed.xml",
-      "name": "Pluu"
-    },
-    {
-      "url": "https://blog.2dal.com/feed",
-      "name": "asbubam"
-    },
-    {
-      "url": "https://astrod.github.io/rss.xml",
-      "name": "Lava"
-    },
-    {
-      "url": "https://sdusb.blogspot.com/feeds/posts/default",
-      "name": "USB"
-    },
-    {
-      "url": "https://medium.com/feed/@joongwon",
-      "name": "Leopold"
-    },
-    {
-      "url": "https://blog.wimy.com/rss/",
-      "name": "Zelon"
-    },
-    {
-      "url": "https://tech.ssut.me/rss/",
-      "name": "tech.ssut"
-    },
-    {
-      "url": "https://totuworld.github.io/feed.xml",
-      "name": "totuworld"
-    },
-    {
-      "url": "https://blog.rhostem.com/rss.xml",
-      "name": "rhostem"
-    },
-    {
-      "url": "https://medium.com/feed/@1amb4a",
-      "name": "Kun"
-    },
-    {
-      "url": "https://brunch.co.kr/rss/@@19LF",
-      "name": "월급쟁이"
-    },
-    {
-      "url": "https://medium.com/feed/@erish",
-      "name": "erish"
-    },
-    {
-      "url": "https://medium.com/feed/@ljs0705",
-      "name": "landvibe"
-    },
-    {
-      "url": "https://lazygyu.net/rss/blog.xml",
-      "name": "lazygyu"
-    },
-    {
-      "url": "https://dongqui.github.io/feed.xml",
-      "name": "dongqui"
-    },
-    {
-      "url": "https://wormwlrm.github.io/feed.xml",
-      "name": "wormwlrm"
-    },
-    {
-      "url": "https://pilgwon.github.io/feed.xml",
-      "name": "pilgwon"
-    },
-    {
-      "url": "https://www.androidhuman.com/feed.xml",
-      "name": "커니"
-    },
-    {
-      "url": "https://xo.dev/rss.xml",
-      "name": "Changhui Lee"
-    },
-    {
-      "url": "https://immigration9.github.io/feed.xml",
-      "name": "immigration9"
-    },
-    {
-      "url": "https://novemberde.github.io/index.xml",
-      "name": "novemberde"
-    },
-    {
-      "url": "https://medium.com/feed/@jungkim",
-      "name": "jungkim"
-    },
-    {
-      "url": "https://sjp38.github.io/ko/index.xml",
-      "name": "sjp38"
-    },
-    {
-      "url": "https://feeds.feedburner.com/saturnsoft",
-      "name": "saturnsoft"
-    },
-    {
-      "url": "https://v2.velog.io/rss/city7310",
-      "name": "city7310"
-    },
-    {
-      "url": "https://giantsol.github.io/feed.xml",
-      "name": "giantsol"
-    },
-    {
-      "url": "https://coffeewhale.com/feed.xml",
-      "name": "coffeewhale"
-    },
-    {
-      "url": "https://feeds.feedburner.com/mytory_tc",
-      "name": "mytory"
-    },
-    {
-      "url": "https://blog.potados.com/feed.xml",
-      "name": "감자도스"
-    },
-    {
-      "url": "https://coolengineer.com/rss",
-      "name": "썰렁한 엔지니어"
-    },
-    {
-      "url": "https://plan9.kr/feed.xml",
-      "name": "plan9"
-    },
-    {
-      "url": "https://medium.com/feed/@curogom",
-      "name": "curogom"
-    },
-    {
-      "url": "https://blog.doosikbae.com/rss",
-      "name": "doosikbae"
-    },
-    {
-      "url": "https://soojin.ro/feed.xml",
-      "name": "soojin.ro"
-    },
-    {
-      "url": "https://nephtyws.github.io/feed.xml",
-      "name": "강웅석"
-    },
-    {
-      "url": "https://1ambda.blog/feed/",
-      "name": "1ambda"
-    },
-    {
-      "url": "https://donghun.dev/feed.xml",
-      "name": "donghun"
-    },
-    {
-      "url": "https://www.hamadevelop.me/rss.xml",
-      "name": "hamadevelop"
-    },
-    {
-      "url": "https://v2.velog.io/rss/xiniha",
-      "name": "xiniha"
-    },
-    {
-      "url": "https://blog.hoseung.me/rss.xml",
-      "name": "hoseung"
-    },
-    {
-      "url": "https://cliearl.github.io/index.xml",
-      "name": "냉동코더"
-    },
-    {
-      "url": "https://imjhk03.github.io/feed.xml",
-      "name": "imjhk03"
-    },
-    {
-      "url": "https://typefully.com/dylayed/rss.xml",
-      "name": "typefully"
-    },
-    {
-      "url": "https://medium.com/feed/@totuworld",
-      "name": "송요창"
-    },
-    {
-      "url": "https://medium.com/feed/@choi-geonu",
-      "name": "최건우"
-    },
-    {
-      "url": "https://v2.velog.io/rss/eddy_song",
-      "name": "eddy_song"
-    },
-    {
-      "url": "https://tech.kakao.com/feed/",
-      "name": "카카오"
-    },
-    {
-      "url": "https://d2.naver.com/d2.atom",
-      "name": "네이버"
+      "name": "토스",
+      "category": "기업"
     },
     {
       "name": "신현묵",
-      "url": "https://v2.velog.io/rss/zetlos"
+      "url": "https://v2.velog.io/rss/zetlos",
+      "category": "개인"
     }
   ]
 }
