@@ -27,6 +27,11 @@ namespace Server.Services
             return await _mongoDbRss.All();
         }
 
+        public async Task<List<Rss>> Category(string category)
+        {
+            return await _mongoDbRss.FindAsync(Builders<Rss>.Filter.Eq(x => x.Category, category));
+        }
+
         public async Task<List<Rss>> Error()
         {
             return await _mongoDbRss.FindAsync(Builders<Rss>.Filter.Ne(x => x.ErrorTime, null));
@@ -50,6 +55,9 @@ namespace Server.Services
 
         private async Task<Rss> Create(Protocols.Common.Rss rss)
         {
+            if (string.IsNullOrEmpty(rss.Category))
+                throw new DeveloperException(Code.ResultCode.InvalidCategory, detail: $"<Name:{rss.Name}, Url:{rss.Url}>");
+
             try
             {
                 rss.Created = DateTime.Now;
