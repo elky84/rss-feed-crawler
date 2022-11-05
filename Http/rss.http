@@ -962,8 +962,13 @@ Content-Type: application/json
       "category": "기업"
     },
     {
-      "name": "신현묵",
-      "url": "https://v2.velog.io/rss/zetlos",
+      "name": "모나미",
+      "url": "https://v2.velog.io/rss/monami",
+      "category": "개인"
+    },
+    {
+      "name": "황인서 (체커)",
+      "url": "https://hislogs.com/rss.xml",
       "category": "개인"
     }
   ]
@@ -977,8 +982,9 @@ Content-Type: application/json
 {
     "Datas": [
       {
-        "name": "신현묵",
-        "url": "https://v2.velog.io/rss/zetlos"
+      "name": "모나미",
+      "url": "https://v2.velog.io/rss/monami",
+      "category": "개인"
       }
     ]
 }
@@ -992,7 +998,8 @@ Content-Type: application/json
 {
     "Data": {
         "Url": "https://internet-craft.tistory.com/rss",
-        "Name": "손현호"
+        "Name": "손현호",
+        "category": "개인"
     }
 }
 
