@@ -47,6 +47,9 @@ namespace Server
                     cfg.CreateMap<EzAspDotNet.Notification.Models.Notification, Protocols.Common.Notification>(MemberList.None);
                     cfg.CreateMap<Protocols.Common.Notification, EzAspDotNet.Notification.Models.Notification>(MemberList.None);
 
+                    cfg.CreateMap<Protocols.Common.NotificationCreate, EzAspDotNet.Notification.Models.Notification>(MemberList.None)
+                        .ForMember(d => d.Created, o => o.MapFrom(s => DateTime.Now));
+
                     cfg.CreateMap<FeedCrawler.Models.Rss, Protocols.Common.Rss>(MemberList.None)
                         .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
