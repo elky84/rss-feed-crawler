@@ -12,6 +12,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<None Include="serilog.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+	
+	<ItemGroup>
 		<ProjectReference Include="..\FeedCrawler\FeedCrawler.csproj" />
 	</ItemGroup>
 

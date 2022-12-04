@@ -21,9 +21,12 @@ namespace Server
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
+            var serilogConfig = new ConfigurationBuilder()
+                .AddJsonFile("serilog.json")
+                .Build();
+
             Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Warning()
-                .WriteTo.Console()
+                .ReadFrom.Configuration(serilogConfig)
                 .CreateLogger();
 
             Configuration = configuration;
