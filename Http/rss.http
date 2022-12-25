@@ -970,6 +970,11 @@ Content-Type: application/json
       "name": "황인서 (체커)",
       "url": "https://hislogs.com/rss.xml",
       "category": "개인"
+    },
+    {
+      "name": "김진홍",
+      "url": "https://v2.velog.io/rss/deepred",
+      "category": "개인"
     }
   ]
 }
@@ -982,8 +987,8 @@ Content-Type: application/json
 {
     "Datas": [
       {
-      "name": "모나미",
-      "url": "https://v2.velog.io/rss/monami",
+      "name": "김진홍",
+      "url": "https://v2.velog.io/rss/deepred",
       "category": "개인"
       }
     ]
