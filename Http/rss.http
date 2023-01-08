@@ -975,6 +975,11 @@ Content-Type: application/json
       "name": "김진홍",
       "url": "https://v2.velog.io/rss/deepred",
       "category": "개인"
+    },
+    {
+        "Url": "https://gyuwon.github.io/feed.xml",
+        "Name": "이규원",
+        "category": "개인"
     }
   ]
 }
@@ -1002,8 +1007,8 @@ Content-Type: application/json
 
 {
     "Data": {
-        "Url": "https://internet-craft.tistory.com/rss",
-        "Name": "손현호",
+        "Url": "https://gyuwon.github.io/feed.xml",
+        "Name": "이규원",
         "category": "개인"
     }
 }
@@ -1020,7 +1025,8 @@ Content-Type: application/json
 {
     "Data": {
         "Url": "http://elky84.github.io/feed.xml",
-        "Name": "Elky Essay"
+        "Name": "Elky Essay",
+        "category": "개인"
     }
 }
 
