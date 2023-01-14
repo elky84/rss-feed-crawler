@@ -16,7 +16,7 @@
 
 # rss-feed-crawler
 
-* .NET 6, ASP NET CORE 3를 기반으로 작성되었습니다.
+* .NET 6, ASP NET CORE 6를 기반으로 작성되었습니다.
 * Feed (RSS) 크롤러로는 [NuGet Gallery | CodeHollow.FeedReader 1.2.1](https://www.nuget.org/packages/CodeHollow.FeedReader/) 사용했습니다.
 * 알림은 Discord, Slack을 지원합니다. Notification 데이터를, Source와 매핑 시켜서 해당 Source에 새 데이터가 갱신되면 알림이 날라오게 되어있습니다.
 * DB로는 mongoDB를 사용합니다.
@@ -26,6 +26,14 @@
     * 위 주소에 제가 사용하는 소스 예시가 있습니다.
 * RSS 알림을 Discord나 Slack으로 전달해주는 기능도 작업이 되어있습니다.
 	* Feedly Pro 기능에서만 연동이 가능해서, 직접 RSS 크롤링 & Notification 기능을 만들었습니다.
+
+## 사용법
+* MongoDB 설정 (Server 프로젝트)
+  * `MONGODB_CONNECTION` 환경 변수에 `MONGODB 커넥션 문자열` 입력
+* 선택적 MongoDB 데이터베이스
+  * 기본 값은 `rss-feed-crawler`
+  * `MONGODB_DATABASE` 환경 변수 사용시 override
+* 환경 변수 미사용시, appSettings.[환경].json 파일에 있는 값을 사용합니다. (환경에 맞는 파일 미제공시, appSettings.json 의 값을 그대로 이용)
 
 ## 각종 API 예시
 * VS Code의 RestClient Plugin의 .http 파일용으로 작성
