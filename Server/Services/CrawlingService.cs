@@ -68,16 +68,14 @@ namespace Server.Services
                 MapperUtil.Map<List<Rss>, List<Protocols.Common.Rss>>(await _rssService.All()) :
                 feed.RssList;
 
-            Parallel.ForEach(rssList, new ParallelOptions { MaxDegreeOfParallelism = 16 },
-                async rss =>
+            foreach (var rss in rssList)
+            {
+                var update = await new RssCrawler(onCrawlDataDelegate, _mongoDbService.Database, MapperUtil.Map<Rss>(rss)).RunAsync();
+                if (update != null)
                 {
-                    var update = await new RssCrawler(onCrawlDataDelegate, _mongoDbService.Database, MapperUtil.Map<Rss>(rss)).RunAsync();
-                    if (update != null)
-                    {
-                        await _rssService.Update(update);
-                    }
+                    await _rssService.Update(update);
                 }
-            );
+            }
 
             return new Protocols.Response.Feed
             {
