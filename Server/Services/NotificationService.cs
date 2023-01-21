@@ -53,8 +53,7 @@ namespace Server.Services
         {
             try
             {
-                var filter = GetFilterDefinition(notification.Type);
-                return await _mongoDbNotification.UpsertAsync(filter, MapperUtil.Map<Notification>(notification));
+                return await _mongoDbNotification.CreateAsync(MapperUtil.Map<Notification>(notification));
             }
             catch (MongoWriteException)
             {
