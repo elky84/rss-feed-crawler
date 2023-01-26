@@ -942,11 +942,6 @@ Content-Type: application/json
       "category": "기업"
     },
     {
-      "url": "https://techblogposts.com/rss.xml",
-      "name": "Tech Blog Posts",
-      "category": "큐레이션"
-    },
-    {
       "url": "https://kimchihill.com/feed/",
       "name": "Kimchi hill",
       "category": "큐레이션"
