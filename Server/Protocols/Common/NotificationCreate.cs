@@ -20,9 +20,7 @@ namespace Server.Protocols.Common
         public string IconUrl { get; set; }
 
         public string BoardName { get; set; }
-
-        public string Keyword { get; set; }
-
+        
         public string Prefix { get; set; }
 
         public string Postfix { get; set; }
