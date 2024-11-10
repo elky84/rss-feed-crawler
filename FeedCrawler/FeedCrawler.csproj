@@ -6,6 +6,6 @@
 
 	<ItemGroup>
 		<PackageReference Include="CodeHollow.FeedReader" Version="1.2.4" />
-		<PackageReference Include="EzAspDotNet" Version="1.0.56" />
+		<PackageReference Include="EzAspDotNet" Version="1.0.60" />
 	</ItemGroup>
 </Project>
