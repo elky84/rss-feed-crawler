@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CodeHollow.FeedReader" Version="1.2.4" />
-		<PackageReference Include="EzAspDotNet" Version="1.0.60" />
+		<PackageReference Include="CodeHollow.FeedReader" Version="1.2.6" />
+		<PackageReference Include="EzAspDotNet" Version="1.0.63" />
 	</ItemGroup>
 </Project>
