@@ -25,4 +25,13 @@
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.1" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<None Include="..\Http\**">
+			<Link>Http\%(RecursiveDir)%(Filename)%(Extension)</Link>
+			<Pack>false</Pack>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+
 </Project>
