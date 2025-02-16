@@ -70,11 +70,14 @@ namespace Server.Services
 
             foreach (var rss in rssList)
             {
-                var update = await new RssCrawler(onCrawlDataDelegate, _mongoDbService.Database, MapperUtil.Map<Rss>(rss)).RunAsync();
-                if (update != null)
+                _ = Task.Run(async () =>
                 {
-                    await _rssService.Update(update);
-                }
+                    var update = await new RssCrawler(onCrawlDataDelegate, _mongoDbService.Database, MapperUtil.Map<Rss>(rss)).RunAsync();
+                    if (update != null)
+                    {
+                        await _rssService.Update(update);
+                    }
+                });
             }
 
             return new Protocols.Response.Feed
