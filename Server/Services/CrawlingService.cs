@@ -8,6 +8,7 @@ using FeedCrawler.Models;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Server.Services
@@ -68,7 +69,7 @@ namespace Server.Services
                 MapperUtil.Map<List<Rss>, List<Protocols.Common.Rss>>(await _rssService.All()) :
                 feed.RssList;
 
-            foreach (var rss in rssList)
+            foreach (var rss in rssList.Where(x => !string.IsNullOrEmpty(x.Url)))
             {
                 _ = Task.Run(async () =>
                 {
