@@ -55,9 +55,6 @@ namespace Server.Services
 
         private async Task<Rss> Create(Protocols.Common.Rss rss)
         {
-            if (string.IsNullOrEmpty(rss.Category))
-                throw new DeveloperException(Code.ResultCode.InvalidCategory, detail: $"<Name:{rss.Name}, Url:{rss.Url}>");
-
             try
             {
                 rss.Created = DateTime.Now;
