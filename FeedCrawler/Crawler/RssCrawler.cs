@@ -10,28 +10,42 @@ using System.Threading.Tasks;
 
 namespace FeedCrawler.Crawler
 {
-    public class RssCrawler
+    public sealed class RssCrawler
     {
-        protected Rss Rss { get; set; }
+        private Rss Rss { get; set; }
 
-        protected MongoDbUtil<FeedData> MongoDbFeedData;
+        private readonly MongoDbUtil<FeedData> _mongoDbFeedData;
 
         public delegate Task CrawlDataDelegate(FeedData data);
 
-        public CrawlDataDelegate OnCrawlDataDelegate { get; set; }
+        private CrawlDataDelegate OnCrawlDataDelegate { get; set; }
 
         public RssCrawler(CrawlDataDelegate onCrawlDataDelegate, IMongoDatabase mongoDb, Rss rss)
         {
             if (mongoDb != null)
             {
-                MongoDbFeedData = new MongoDbUtil<FeedData>(mongoDb);
+                _mongoDbFeedData = new MongoDbUtil<FeedData>(mongoDb);
             }
 
             OnCrawlDataDelegate = onCrawlDataDelegate;
             Rss = rss;
         }
+        
+        public static string EnsureHttpsUrl(string url)
+        {
+            if (string.IsNullOrWhiteSpace(url))
+                return url;
 
-        public virtual async Task<Rss> RunAsync()
+            if (!url.StartsWith("http://", StringComparison.OrdinalIgnoreCase) &&
+                !url.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+            {
+                return "https://" + url;
+            }
+
+            return url;
+        }
+
+        public async Task<Rss> RunAsync()
         {
             try
             {
@@ -42,7 +56,7 @@ namespace FeedCrawler.Crawler
                     if (item.SpecificItem is AtomFeedItem)
                     {
                         var atomFeedItem = item.SpecificItem as AtomFeedItem;
-                        link = atomFeedItem.Links.LastOrDefault().Href;
+                        link = atomFeedItem?.Links.LastOrDefault()?.Href;
                     }
 
                     if (link != null)
@@ -55,8 +69,10 @@ namespace FeedCrawler.Crawler
                     }
                     else
                     {
-                        Log.Error($"Not found Link. <Item:{item}> <Url:{Rss.Url}>");
+                        Log.Error("Not found Link. <Item:{FeedItem}> <Url:{RssUrl}>", item, Rss.Url);
                     }
+
+                    link = EnsureHttpsUrl(link);
 
                     var feedData = new FeedData
                     {
@@ -83,30 +99,34 @@ namespace FeedCrawler.Crawler
             catch (Exception e)
             {
                 Rss.Error = e.Message;
-                if (!Rss.ErrorTime.HasValue)
-                {
-                    Rss.ErrorTime = DateTime.Now;
-                }
+                Rss.ErrorTime ??= DateTime.Now;
                 return Rss;
             }
             return null;
         }
 
-        protected async Task OnCrawlData(FeedData feedData)
+        private async Task OnCrawlData(FeedData feedData)
         {
-            if (MongoDbFeedData == null)
+            if (_mongoDbFeedData == null)
             {
                 return;
             }
-
-            await MongoDbFeedData.UpsertAsync(Builders<FeedData>.Filter.Eq(x => x.Url, feedData.Url) &
+            
+            await _mongoDbFeedData.UpsertAsync(Builders<FeedData>.Filter.Eq(x => x.Url, feedData.Url) &
                     Builders<FeedData>.Filter.Eq(x => x.Href, feedData.Href),
                     feedData,
-                    async (feedData) =>
+                    async void (data) =>
                     {
-                        if (OnCrawlDataDelegate != null)
+                        try
                         {
-                            await OnCrawlDataDelegate.Invoke(feedData);
+                            if (OnCrawlDataDelegate != null)
+                            {
+                                await OnCrawlDataDelegate.Invoke(data);
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            Log.Error(e, $"Title:{data.ItemTitle} Href:{feedData.Href}");
                         }
                     });
         }
