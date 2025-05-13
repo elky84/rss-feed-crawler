@@ -50,6 +50,9 @@ namespace FeedCrawler.Crawler
             try
             {
                 var feed = await FeedReader.ReadAsync(Rss.Url);
+                Rss.ErrorTime = null;
+                Rss.Error = string.Empty;
+                
                 foreach (var item in feed.Items)
                 {
                     var link = item.Link;
@@ -70,6 +73,7 @@ namespace FeedCrawler.Crawler
                     else
                     {
                         Log.Error("Not found Link. <Item:{FeedItem}> <Url:{RssUrl}>", item, Rss.Url);
+                        continue;
                     }
 
                     link = EnsureHttpsUrl(link);
@@ -102,7 +106,7 @@ namespace FeedCrawler.Crawler
                 Rss.ErrorTime ??= DateTime.Now;
                 return Rss;
             }
-            return null;
+            return Rss;
         }
 
         private async Task OnCrawlData(FeedData feedData)

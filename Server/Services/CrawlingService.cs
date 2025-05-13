@@ -75,7 +75,6 @@ namespace Server.Services
 
             foreach (var rss in rssList.Where(x => !string.IsNullOrEmpty(x.Url)))
             {
-                await semaphore.WaitAsync();
                 var task = Task.Run(async () =>
                 {
                     try

@@ -25,20 +25,14 @@ namespace Cli
 
             await new RssCrawler(null, database, new FeedCrawler.Models.Rss
             {
-                Url = "http://daddynkidsmakers.blogspot.com/feeds/posts/default",
-                Name = "강태욱"
+                Url = "https://medium.com/feed/hgmin",
+                Name = "테스트"
             }).RunAsync();
 
             await new RssCrawler(null, database, new FeedCrawler.Models.Rss
             {
                 Url = "https://elky84.github.io/feed.xml",
                 Name = "Elky Essay"
-            }).RunAsync();
-
-            await new RssCrawler(null, database, new FeedCrawler.Models.Rss
-            {
-                Url = "https://developer.amazon.com/blogs/home/feed/entries/atom",
-                Name = "Amazon Developer Blogs"
             }).RunAsync();
         }
     }
