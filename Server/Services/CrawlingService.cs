@@ -84,6 +84,8 @@ namespace Server.Services
                         {
                             await _rssService.Update(update);
                         }
+                        
+                        Thread.Sleep(100);
                     }
                     finally
                     {
