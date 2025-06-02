@@ -70,11 +70,12 @@ namespace Server.Services
                 MapperUtil.Map<List<Rss>, List<Protocols.Common.Rss>>(await _rssService.All()) :
                 feed.RssList;
 
-            var semaphore = new SemaphoreSlim(16); // 최대 동시 실행 제한
+            var semaphore = new SemaphoreSlim(8);
             var tasks = new List<Task>();
 
             foreach (var rss in rssList.Where(x => !string.IsNullOrEmpty(x.Url)))
             {
+                await semaphore.WaitAsync();
                 var task = Task.Run(async () =>
                 {
                     try
@@ -84,8 +85,8 @@ namespace Server.Services
                         {
                             await _rssService.Update(update);
                         }
-                        
-                        Thread.Sleep(100);
+
+                        await Task.Delay(100);
                     }
                     finally
                     {
@@ -97,6 +98,7 @@ namespace Server.Services
             }
 
             await Task.WhenAll(tasks);
+
             
             return new Protocols.Response.Feed
             {
