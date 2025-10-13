@@ -363,3 +363,6 @@ Properties/
 # vscode rest clinet
 notification.http
 http/.vscode/settings.json
+
+# rider
+.idea/
