@@ -11,6 +11,7 @@ using Serilog;
 using Server.Services;
 using System;
 using System.Text;
+using Microsoft.Extensions.Logging;
 
 namespace Server
 {
@@ -42,6 +43,11 @@ namespace Server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var loggerFactory = LoggerFactory.Create(builder =>
+            {
+                builder.AddSerilog(Log.Logger);
+            });
+
             EzAspDotNet.Models.MapperUtil.Initialize(
                 new MapperConfiguration(cfg =>
                 {
@@ -63,7 +69,7 @@ namespace Server
 
                     cfg.CreateMap<FeedCrawler.Models.FeedData, Protocols.Common.FeedData>(MemberList.None);
                     cfg.CreateMap<Protocols.Common.FeedData, FeedCrawler.Models.FeedData>(MemberList.None);
-                })
+                }, loggerFactory)
             );
 
             services.AddHttpClient();
