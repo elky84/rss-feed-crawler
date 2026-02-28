@@ -70,34 +70,18 @@ namespace Server.Services
                 MapperUtil.Map<List<Rss>, List<Protocols.Common.Rss>>(await _rssService.All()) :
                 feed.RssList;
 
-            var semaphore = new SemaphoreSlim(8);
             var tasks = new List<Task>();
 
             foreach (var rss in rssList.Where(x => !string.IsNullOrEmpty(x.Url)))
             {
-                await semaphore.WaitAsync();
-                var task = Task.Run(async () =>
+                var update = await new RssCrawler(onCrawlDataDelegate, _mongoDbService.Database, MapperUtil.Map<Rss>(rss)).RunAsync();
+                if (update != null)
                 {
-                    try
-                    {
-                        var update = await new RssCrawler(onCrawlDataDelegate, _mongoDbService.Database, MapperUtil.Map<Rss>(rss)).RunAsync();
-                        if (update != null)
-                        {
-                            await _rssService.Update(update);
-                        }
+                    await _rssService.Update(update);
+                }
 
-                        await Task.Delay(100);
-                    }
-                    finally
-                    {
-                        semaphore.Release();
-                    }
-                });
-
-                tasks.Add(task);
+                await Task.Delay(100);
             }
-
-            await Task.WhenAll(tasks);
 
             
             return new Protocols.Response.Feed
