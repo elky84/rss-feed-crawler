@@ -7,6 +7,6 @@
 	<ItemGroup>
 		<PackageReference Include="CodeHollow.FeedReader" Version="1.2.6" />
 		<PackageReference Include="Serilog.Extensions.Logging" Version="10.0.0" />
-		<PackageReference Include="EzAspDotNet" Version="1.1.0" />
+		<PackageReference Include="EzAspDotNet" Version="1.1.1" />
 	</ItemGroup>
 </Project>
