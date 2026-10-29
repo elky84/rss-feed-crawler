@@ -1,0 +1,72 @@
+@code {
+    [Parameter] public bool WebHook { get; set; }
+
+    [Inject] private ExportService Service { get; set; }
+
+    private DateTime from = DateTime.Today.AddDays(-7);
+    private DateTime to = DateTime.Today.AddDays(1);
+    private string siteType = "";
+    private string boardId = "";
+    private int limit = 1000;
+    private List<Row> rows;
+
+    private record Row(DateTime DateTime, string Title, string Link, string SiteType, string BoardId);
+
+    private string Path =>
+        $"/Export/{(WebHook ? "WebHook" : "Rss")}" +
+        $"?from={Uri.EscapeDataString(from.ToString("s"))}&to={Uri.EscapeDataString(to.ToString("s"))}" +
+        $"&siteType={Uri.EscapeDataString(siteType ?? "")}&boardId={Uri.EscapeDataString(boardId ?? "")}&limit={limit}";
+
+    private async Task Search()
+    {
+        var req = new Protocols.Request.ExportWebHook
+        {
+            From = from,
+            To = to,
+            Limit = limit,
+            SiteType = string.IsNullOrWhiteSpace(siteType) ? null : siteType,
+            BoardId = string.IsNullOrWhiteSpace(boardId) ? null : boardId
+        };
+
+        if (WebHook)
+        {
+            rows = (await Service.WebHook(req))
+                .Select(x => new Row(x.DateTime, x.Title, x.TitleLink, x.SiteType, x.BoardId)).ToList();
+        }
+        else
+        {
+            rows = (await Service.Rss(req))
+                .Select(x => new Row(x.DateTime, x.ItemTitle, x.Href, x.SiteType, x.BoardId)).ToList();
+        }
+    }
+}
+
+<h3>@(WebHook ? "WebHook" : "RSS") 내보내기</h3>
+
+<div>
+    <label>From <input type="datetime-local" @bind="from" /></label>
+    <label>To <input type="datetime-local" @bind="to" /></label>
+    <label>SiteType <input @bind="siteType" /></label>
+    <label>BoardId <input @bind="boardId" /></label>
+    <label>Limit <input type="number" @bind="limit" /></label>
+</div>
+<button @onclick="Search">조회</button>
+<a href="@Path" target="_blank">rss.xml 보기</a> |
+<a href="@(Path)&download=true">rss.xml 다운로드</a>
+
+@if (rows != null)
+{
+    <p>@rows.Count 건</p>
+    <table>
+        <tr><th>일시</th><th>제목</th><th>SiteType</th><th>BoardId</th></tr>
+        @foreach (var r in rows)
+        {
+            <tr>
+                <td>@r.DateTime.ToString("yyyy-MM-dd HH:mm")</td>
+                <td><a href="@r.Link" target="_blank">@r.Title</a></td>
+                <td>@r.SiteType</td>
+                <td>@r.BoardId</td>
+            </tr>
+        }
+    </table>
+}

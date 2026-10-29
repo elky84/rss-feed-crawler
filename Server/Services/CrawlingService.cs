@@ -24,6 +24,8 @@ namespace Server.Services
 
         private readonly MongoDbUtil<FeedData> _mongoFeedData;
 
+        private readonly IMongoCollection<WebHookHistory> _mongoWebHookHistory;
+
         public CrawlingService(MongoDbService mongoDbService,
             RssService rssService,
             WebHookService webHookService)
@@ -32,6 +34,12 @@ namespace Server.Services
             _rssService = rssService;
             _webHookService = webHookService;
             _mongoFeedData = new MongoDbUtil<FeedData>(mongoDbService.Database);
+            _mongoWebHookHistory = mongoDbService.Database.GetCollection<WebHookHistory>(nameof(WebHookHistory));
+            _mongoWebHookHistory.Indexes.CreateMany(new List<CreateIndexModel<WebHookHistory>>
+            {
+                new CreateIndexModel<WebHookHistory>(Builders<WebHookHistory>.IndexKeys.Descending(x => x.DateTime)),
+                new CreateIndexModel<WebHookHistory>(Builders<WebHookHistory>.IndexKeys.Ascending(x => x.SiteType).Ascending(x => x.BoardId))
+            });
 
             _mongoFeedData.Collection.Indexes.CreateMany(new List<CreateIndexModel<FeedData>>
             {
@@ -96,6 +104,17 @@ namespace Server.Services
             {
                 return;
             }
+
+            await _mongoWebHookHistory.InsertOneAsync(new WebHookHistory
+            {
+                Title = $"{feedData.ItemTitle} - {feedData.FeedTitle}",
+                Footer = feedData.ItemAuthor,
+                TitleLink = feedData.Href,
+                DateTime = feedData.DateTime,
+                Sent = DateTime.Now,
+                SiteType = feedData.SiteType,
+                BoardId = feedData.BoardId
+            });
 
             await _webHookService.Execute(Builders<Notification>.Filter.Empty,
                 new EzAspDotNet.Notification.Data.WebHook

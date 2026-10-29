@@ -76,6 +76,8 @@ namespace Server
 
             services.AddControllers().AddNewtonsoftJson();
 
+            services.AddRazorComponents().AddInteractiveServerComponents();
+
             services.AddCors(options => options.AddPolicy("AllowSpecificOrigin",
                 builder =>
                 {
@@ -107,6 +109,8 @@ namespace Server
             services.AddSingleton<NotificationService>();
 
             services.AddSingleton<RssService>();
+
+            services.AddSingleton<ExportService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -129,9 +133,13 @@ namespace Server
 
             app.UseAuthorization();
 
+            app.UseAntiforgery();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapRazorComponents<Components.App>()
+                    .AddInteractiveServerRenderMode();
             });
 
             app.UseSwagger(c =>

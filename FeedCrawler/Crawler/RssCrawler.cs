@@ -87,6 +87,8 @@ namespace FeedCrawler.Crawler
                         ItemContent = item.Content,
                         FeedTitle = feed.Title,
                         Href = link,
+                        BoardId = Rss.Id,
+                        SiteType = Rss.Category,
                         DateTime = item.PublishingDate.GetValueOrDefault(DateTime.Now)
                     };
 

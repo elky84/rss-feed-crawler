@@ -19,5 +19,9 @@ namespace Server.Protocols.Common
         public string ItemAuthor { get; set; }
 
         public string ItemContent { get; set; }
+
+        public string BoardId { get; set; }
+
+        public string SiteType { get; set; }
     }
 }

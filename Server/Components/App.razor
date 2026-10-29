@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <title>RSS Feed Crawler</title>
+    <style>
+        body { font-family: sans-serif; margin: 2rem; }
+        label { display: inline-block; margin: 0 1rem .5rem 0; }
+        input { margin-left: .3rem; }
+        table { border-collapse: collapse; margin-top: 1rem; width: 100%; }
+        td, th { border: 1px solid #ccc; padding: .3rem .5rem; text-align: left; }
+        nav a { margin-right: 1rem; }
+    </style>
+    <HeadOutlet @rendermode="InteractiveServer" />
+</head>
+<body>
+    <Routes @rendermode="InteractiveServer" />
+    <script src="_framework/blazor.web.js"></script>
+</body>
+</html>
