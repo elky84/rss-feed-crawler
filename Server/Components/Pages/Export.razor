@@ -1,7 +1,12 @@
+@using Microsoft.AspNetCore.WebUtilities
+@using Microsoft.JSInterop
+
 @code {
     [Parameter] public bool WebHook { get; set; }
 
     [Inject] private ExportService Service { get; set; }
+    [Inject] private NavigationManager Nav { get; set; }
+    [Inject] private IJSRuntime JS { get; set; }
 
     private DateTime from = DateTime.Today.AddDays(-7);
     private DateTime to = DateTime.Today.AddDays(1);
@@ -17,8 +22,57 @@
         $"?from={Uri.EscapeDataString(from.ToString("s"))}&to={Uri.EscapeDataString(to.ToString("s"))}" +
         $"&siteType={Uri.EscapeDataString(siteType ?? "")}&boardId={Uri.EscapeDataString(boardId ?? "")}&limit={limit}";
 
+    private string PageUrl =>
+        Nav.ToAbsoluteUri(WebHook ? "/webhook" : "/").ToString() +
+        $"?from={Uri.EscapeDataString(from.ToString("s"))}&to={Uri.EscapeDataString(to.ToString("s"))}" +
+        $"&siteType={Uri.EscapeDataString(siteType ?? "")}&boardId={Uri.EscapeDataString(boardId ?? "")}&limit={limit}";
+
+    private string copied;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var query = QueryHelpers.ParseQuery(new Uri(Nav.Uri).Query);
+        if (query.Count == 0)
+            return;
+
+        if (query.TryGetValue("from", out var f) && DateTime.TryParse(f, out var fromValue)) from = fromValue;
+        if (query.TryGetValue("to", out var t) && DateTime.TryParse(t, out var toValue)) to = toValue;
+        if (query.TryGetValue("siteType", out var s)) siteType = s.ToString();
+        if (query.TryGetValue("boardId", out var b)) boardId = b.ToString();
+        if (query.TryGetValue("limit", out var l) && int.TryParse(l, out var limitValue)) limit = limitValue;
+
+        await Search();
+    }
+
+    private void SetRange(TimeSpan span)
+    {
+        to = DateTime.Now;
+        from = to - span;
+        UpdateAddressBar();
+    }
+
+    private void SetToday()
+    {
+        from = DateTime.Today;
+        to = DateTime.Today.AddDays(1);
+        UpdateAddressBar();
+    }
+
+    private void UpdateAddressBar() => Nav.NavigateTo(PageUrl, replace: true);
+
+    private async Task Copy(string key, string url)
+    {
+        await JS.InvokeVoidAsync("navigator.clipboard.writeText", url);
+        copied = key;
+        StateHasChanged();
+        await Task.Delay(1500);
+        copied = null;
+    }
+
     private async Task Search()
     {
+        UpdateAddressBar();
+
         var req = new Protocols.Request.ExportWebHook
         {
             From = from,
@@ -50,9 +104,24 @@
     <label>BoardId <input @bind="boardId" /></label>
     <label>Limit <input type="number" @bind="limit" /></label>
 </div>
-<button @onclick="Search">조회</button>
-<a href="@Path" target="_blank">rss.xml 보기</a> |
-<a href="@(Path)&download=true">rss.xml 다운로드</a>
+<div>기간 프리셋:</div>
+<div>
+    <button @onclick="() => SetRange(TimeSpan.FromHours(1))">1시간</button>
+    <button @onclick="() => SetRange(TimeSpan.FromHours(6))">6시간</button>
+    <button @onclick="() => SetRange(TimeSpan.FromHours(12))">12시간</button>
+    <button @onclick="() => SetRange(TimeSpan.FromHours(24))">24시간</button>
+    <button @onclick="SetToday">오늘</button>
+    <button @onclick="() => SetRange(TimeSpan.FromDays(3))">3일</button>
+    <button @onclick="() => SetRange(TimeSpan.FromDays(7))">7일</button>
+    <button @onclick="() => SetRange(TimeSpan.FromDays(30))">30일</button>
+</div>
+<div>
+    <button @onclick="Search">조회</button>
+    <button @onclick='() => Copy("page", PageUrl)'>@(copied == "page" ? "복사됨" : "검색 URL 복사")</button> |
+    <a href="@Path" target="_blank">rss.xml 보기</a> |
+    <a href="@(Path)&download=true">rss.xml 다운로드</a> |
+    <button @onclick='() => Copy("rss", Nav.ToAbsoluteUri(Path).ToString())'>@(copied == "rss" ? "복사됨" : "rss.xml URL 복사")</button>
+</div>
 
 @if (rows != null)
 {
