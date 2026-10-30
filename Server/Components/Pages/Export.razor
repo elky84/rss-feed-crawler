@@ -41,24 +41,29 @@
         if (query.TryGetValue("boardId", out var b)) boardId = b.ToString();
         if (query.TryGetValue("limit", out var l) && int.TryParse(l, out var limitValue)) limit = limitValue;
 
-        await Search();
+        await Search(updateAddressBar: false);
     }
 
-    private void SetRange(TimeSpan span)
+    private async Task SetRange(TimeSpan span)
     {
         to = DateTime.Now;
         from = to - span;
-        UpdateAddressBar();
+        await Search();
     }
 
-    private void SetToday()
+    private async Task SetToday()
     {
         from = DateTime.Today;
         to = DateTime.Today.AddDays(1);
-        UpdateAddressBar();
+        await Search();
     }
 
-    private void UpdateAddressBar() => Nav.NavigateTo(PageUrl, replace: true);
+    // NavigateTo 는 프리렌더/리라우팅을 일으켜 값이 초기화되므로 주소창만 갱신한다
+    private async Task UpdateAddressBar()
+    {
+        try { await JS.InvokeVoidAsync("history.replaceState", null, "", PageUrl); }
+        catch (InvalidOperationException) { } // 프리렌더 중에는 JS 호출 불가
+    }
 
     private async Task Copy(string key, string url)
     {
@@ -69,9 +74,10 @@
         copied = null;
     }
 
-    private async Task Search()
+    private async Task Search(bool updateAddressBar = true)
     {
-        UpdateAddressBar();
+        if (updateAddressBar)
+            await UpdateAddressBar();
 
         var req = new Protocols.Request.ExportWebHook
         {
@@ -98,11 +104,11 @@
 <h3>@(WebHook ? "RSS Short" : "RSS") 내보내기</h3>
 
 <div>
-    <label>From <input type="datetime-local" @bind="from" /></label>
-    <label>To <input type="datetime-local" @bind="to" /></label>
-    <label>SiteType <input @bind="siteType" /></label>
-    <label>BoardId <input @bind="boardId" /></label>
-    <label>Limit (0=전체) <input type="number" @bind="limit" /></label>
+    <label>From <input type="datetime-local" @bind="from" @bind:after="UpdateAddressBar" /></label>
+    <label>To <input type="datetime-local" @bind="to" @bind:after="UpdateAddressBar" /></label>
+    <label>SiteType <input @bind="siteType" @bind:after="UpdateAddressBar" /></label>
+    <label>BoardId <input @bind="boardId" @bind:after="UpdateAddressBar" /></label>
+    <label>Limit (0=전체) <input type="number" @bind="limit" @bind:after="UpdateAddressBar" /></label>
 </div>
 <div>기간 프리셋:</div>
 <div>
@@ -116,7 +122,7 @@
     <button @onclick="() => SetRange(TimeSpan.FromDays(30))">30일</button>
 </div>
 <div>
-    <button @onclick="Search">조회</button>
+    <button @onclick="() => Search()">조회</button>
     <button @onclick='() => Copy("page", PageUrl)'>@(copied == "page" ? "복사됨" : "검색 URL 복사")</button> |
     <a href="@Path" target="_blank">rss.xml 보기</a> |
     <a href="@(Path)&download=true">rss.xml 다운로드</a> |
@@ -131,7 +137,7 @@
         @foreach (var r in rows)
         {
             <tr>
-                <td>@r.DateTime.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@r.DateTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
                 <td><a href="@r.Link" target="_blank">@r.Title</a></td>
                 <td>@r.SiteType</td>
                 <td>@r.BoardId</td>

@@ -25,10 +25,15 @@ namespace Server.Services
             _mongoWebHookHistory = mongoDbService.Database.GetCollection<WebHookHistory>(nameof(WebHookHistory));
         }
 
+        // Kind 가 Unspecified 인 입력은 서버 로컬 시간으로 간주해 저장값(UTC)과 같은 기준으로 맞춘다
+        private static DateTime ToUtc(DateTime value) =>
+            value.Kind == DateTimeKind.Utc ? value : TimeZoneInfo.ConvertTimeToUtc(
+                value.Kind == DateTimeKind.Local ? value : DateTime.SpecifyKind(value, DateTimeKind.Local));
+
         public async Task<List<FeedData>> Rss(ExportRss request)
         {
             var b = Builders<FeedData>.Filter;
-            var filter = b.Gte(x => x.DateTime, request.From) & b.Lte(x => x.DateTime, request.To);
+            var filter = b.Gte(x => x.DateTime, ToUtc(request.From)) & b.Lte(x => x.DateTime, ToUtc(request.To));
             if (!string.IsNullOrEmpty(request.SiteType))
             {
                 filter &= b.Eq(x => x.SiteType, request.SiteType);
@@ -46,7 +51,7 @@ namespace Server.Services
         public async Task<List<WebHookHistory>> WebHook(ExportWebHook request)
         {
             var b = Builders<WebHookHistory>.Filter;
-            var filter = b.Gte(x => x.DateTime, request.From) & b.Lte(x => x.DateTime, request.To);
+            var filter = b.Gte(x => x.DateTime, ToUtc(request.From)) & b.Lte(x => x.DateTime, ToUtc(request.To));
             if (!string.IsNullOrEmpty(request.SiteType))
             {
                 filter &= b.Eq(x => x.SiteType, request.SiteType);
@@ -135,7 +140,7 @@ namespace Server.Services
                     new XElement("title", i.Title),
                     new XElement("link", i.Link),
                     new XElement("guid", i.Link),
-                    new XElement("pubDate", i.DateTime.ToString("r")));
+                    new XElement("pubDate", i.DateTime.ToUniversalTime().ToString("r")));
                 if (!string.IsNullOrEmpty(i.Content)) item.Add(new XElement("description", i.Content));
                 if (!string.IsNullOrEmpty(i.Author)) item.Add(new XElement("author", i.Author));
                 if (!string.IsNullOrEmpty(i.Category)) item.Add(new XElement("category", i.Category));
