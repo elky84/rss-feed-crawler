@@ -12,12 +12,12 @@ GET {{host}}/Export/Rss?from=2026-10-01T00:00:00&to=2026-10-31T23:59:59&download
 
 ### WebHook 기간 조회 (rss.xml 내용을 응답으로)
 
-GET {{host}}/Export/WebHook?from=2026-10-01T00:00:00&to=2026-10-31T23:59:59
+GET {{host}}/Export/RssShort?from=2026-10-01T00:00:00&to=2026-10-31T23:59:59
 
 ### WebHook 기간 + SiteType + BoardId 조건
 
-GET {{host}}/Export/WebHook?from=2026-10-01T00:00:00&to=2026-10-31T23:59:59&siteType=개인&boardId=000000000000000000000000&limit=100
+GET {{host}}/Export/RssShort?from=2026-10-01T00:00:00&to=2026-10-31T23:59:59&siteType=개인&boardId=000000000000000000000000&limit=100
 
 ### WebHook rss.xml 파일로 다운로드
 
-GET {{host}}/Export/WebHook?from=2026-10-01T00:00:00&to=2026-10-31T23:59:59&download=true
+GET {{host}}/Export/RssShort?from=2026-10-01T00:00:00&to=2026-10-31T23:59:59&download=true

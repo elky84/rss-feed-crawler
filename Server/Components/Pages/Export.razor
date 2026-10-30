@@ -12,18 +12,18 @@
     private DateTime to = DateTime.Today.AddDays(1);
     private string siteType = "";
     private string boardId = "";
-    private int limit = 1000;
+    private int limit = 0;
     private List<Row> rows;
 
     private record Row(DateTime DateTime, string Title, string Link, string SiteType, string BoardId);
 
     private string Path =>
-        $"/Export/{(WebHook ? "WebHook" : "Rss")}" +
+        $"/Export/{(WebHook ? "RssShort" : "Rss")}" +
         $"?from={Uri.EscapeDataString(from.ToString("s"))}&to={Uri.EscapeDataString(to.ToString("s"))}" +
         $"&siteType={Uri.EscapeDataString(siteType ?? "")}&boardId={Uri.EscapeDataString(boardId ?? "")}&limit={limit}";
 
     private string PageUrl =>
-        Nav.ToAbsoluteUri(WebHook ? "/webhook" : "/").ToString() +
+        Nav.ToAbsoluteUri(WebHook ? "/rssshort" : "/").ToString() +
         $"?from={Uri.EscapeDataString(from.ToString("s"))}&to={Uri.EscapeDataString(to.ToString("s"))}" +
         $"&siteType={Uri.EscapeDataString(siteType ?? "")}&boardId={Uri.EscapeDataString(boardId ?? "")}&limit={limit}";
 
@@ -62,7 +62,7 @@
 
     private async Task Copy(string key, string url)
     {
-        await JS.InvokeVoidAsync("navigator.clipboard.writeText", url);
+        await JS.InvokeVoidAsync("copyText", url);
         copied = key;
         StateHasChanged();
         await Task.Delay(1500);
@@ -85,24 +85,24 @@
         if (WebHook)
         {
             rows = (await Service.WebHook(req))
-                .Select(x => new Row(x.DateTime, x.Title, x.TitleLink, x.SiteType, x.BoardId)).ToList();
+                .Select(x => new Row(x.DateTime, ExportService.TitleOf(x), x.TitleLink, x.SiteType, x.BoardId)).ToList();
         }
         else
         {
             rows = (await Service.Rss(req))
-                .Select(x => new Row(x.DateTime, x.ItemTitle, x.Href, x.SiteType, x.BoardId)).ToList();
+                .Select(x => new Row(x.DateTime, ExportService.TitleOf(x), x.Href, x.SiteType, x.BoardId)).ToList();
         }
     }
 }
 
-<h3>@(WebHook ? "WebHook" : "RSS") 내보내기</h3>
+<h3>@(WebHook ? "RSS Short" : "RSS") 내보내기</h3>
 
 <div>
     <label>From <input type="datetime-local" @bind="from" /></label>
     <label>To <input type="datetime-local" @bind="to" /></label>
     <label>SiteType <input @bind="siteType" /></label>
     <label>BoardId <input @bind="boardId" /></label>
-    <label>Limit <input type="number" @bind="limit" /></label>
+    <label>Limit (0=전체) <input type="number" @bind="limit" /></label>
 </div>
 <div>기간 프리셋:</div>
 <div>

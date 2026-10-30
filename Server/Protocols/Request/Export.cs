@@ -12,7 +12,7 @@ namespace Server.Protocols.Request
 
         public string BoardId { get; set; }
 
-        public int Limit { get; set; } = 1000;
+        public int Limit { get; set; } = 0;
 
         public bool Download { get; set; }
     }

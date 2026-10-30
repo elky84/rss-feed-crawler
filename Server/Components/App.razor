@@ -17,6 +17,22 @@
 </head>
 <body>
     <Routes @rendermode="InteractiveServer" />
+    <script>
+        window.copyText = async function (text) {
+            if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(text);
+                return;
+            }
+            // HTTP 등 비보안 컨텍스트에서는 clipboard API가 없어 fallback 사용
+            const ta = document.createElement("textarea");
+            ta.value = text;
+            ta.style.position = "fixed";
+            ta.style.opacity = "0";
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand("copy"); } finally { document.body.removeChild(ta); }
+        };
+    </script>
     <script src="_framework/blazor.web.js"></script>
 </body>
 </html>

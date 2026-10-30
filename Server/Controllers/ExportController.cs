@@ -16,10 +16,10 @@ namespace Server.Controllers
             return Xml(xml, request.Download);
         }
 
-        [HttpGet("WebHook")]
-        public async Task<IActionResult> WebHook([FromQuery] Protocols.Request.ExportWebHook request)
+        [HttpGet("RssShort")]
+        public async Task<IActionResult> RssShort([FromQuery] Protocols.Request.ExportWebHook request)
         {
-            var xml = ExportService.ToRssXml("WebHook", $"{request.From:s} ~ {request.To:s}", await exportService.WebHook(request));
+            var xml = ExportService.ToRssXml("RSS Short", $"{request.From:s} ~ {request.To:s}", await exportService.WebHook(request));
             return Xml(xml, request.Download);
         }
 

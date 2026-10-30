@@ -6,6 +6,8 @@ using Server.Protocols.Request;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -38,7 +40,7 @@ namespace Server.Services
             }
 
             return await _mongoFeedData.Collection.Find(filter)
-                .SortByDescending(x => x.DateTime).Limit(request.Limit).ToListAsync();
+                .SortByDescending(x => x.DateTime).Limit(request.Limit > 0 ? request.Limit : null).ToListAsync();
         }
 
         public async Task<List<WebHookHistory>> WebHook(ExportWebHook request)
@@ -56,20 +58,68 @@ namespace Server.Services
             }
 
             return await _mongoWebHookHistory.Find(filter)
-                .SortByDescending(x => x.DateTime).Limit(request.Limit).ToListAsync();
+                .SortByDescending(x => x.DateTime).Limit(request.Limit > 0 ? request.Limit : null).ToListAsync();
         }
 
         public static string ToRssXml(string title, string description, IEnumerable<FeedData> items)
         {
             return Build(title, description, items.Select(x =>
-                (x.ItemTitle, x.Href, x.ItemContent ?? x.Description, x.ItemAuthor, x.DateTime, x.SiteType)));
+            {
+                var content = ToPlainText(x.ItemContent);
+                return (TitleOf(x), x.Href, Truncate(content, ContentMaxLength), x.ItemAuthor, x.DateTime, x.SiteType);
+            }));
         }
+
+        public static string TitleOf(FeedData x)
+        {
+            if (IsValidTitle(x.ItemTitle)) return x.ItemTitle.Trim();
+
+            var content = ToPlainText(x.ItemContent);
+            if (!string.IsNullOrEmpty(content)) return Truncate(content, TitleMaxLength);
+
+            return !string.IsNullOrWhiteSpace(x.FeedTitle) ? x.FeedTitle.Trim() : x.Href;
+        }
+
+        public static string TitleOf(WebHookHistory x) => CleanHistoryTitle(x.Title, x.TitleLink);
 
         public static string ToRssXml(string title, string description, IEnumerable<WebHookHistory> items)
         {
             return Build(title, description, items.Select(x =>
-                (x.Title, x.TitleLink, (string)null, x.Footer, x.DateTime, x.SiteType)));
+                (TitleOf(x), x.TitleLink, (string)null, x.Footer, x.DateTime, x.SiteType)));
         }
+
+        private const int TitleMaxLength = 80;
+        private const int ContentMaxLength = 300;
+
+        private static bool IsValidTitle(string title) =>
+            !string.IsNullOrWhiteSpace(title) && !title.Trim().Equals("No Title", StringComparison.OrdinalIgnoreCase);
+
+        // 저장된 Title 은 "{ItemTitle} - {FeedTitle}" 형태라 앞쪽 "No Title - " 을 제거한다
+        private static string CleanHistoryTitle(string title, string link)
+        {
+            if (string.IsNullOrWhiteSpace(title)) return link;
+
+            title = title.Trim();
+            const string prefix = "No Title";
+            if (title.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
+            {
+                title = title.Substring(prefix.Length).TrimStart(' ', '-').Trim();
+            }
+
+            return string.IsNullOrEmpty(title) ? link : title;
+        }
+
+        private static string ToPlainText(string html)
+        {
+            if (string.IsNullOrWhiteSpace(html)) return null;
+
+            var text = WebUtility.HtmlDecode(Regex.Replace(html, "<[^>]*>", " "));
+            text = Regex.Replace(text, @"\s+", " ").Trim();
+            return text.Length == 0 ? null : text;
+        }
+
+        private static string Truncate(string text, int max) =>
+            string.IsNullOrEmpty(text) || text.Length <= max ? text : text.Substring(0, max).TrimEnd() + "…";
 
         private static string Build(string title, string description,
             IEnumerable<(string Title, string Link, string Content, string Author, DateTime DateTime, string Category)> items)
